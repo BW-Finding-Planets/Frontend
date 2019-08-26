@@ -21,9 +21,16 @@ function App() {
         <img src="https://www.cfa.harvard.edu/~avanderb/tutorial/hatp7.png" className="App-logo" alt="logo" />
         
         <div className="Buttons">
-        <Button content='Previous' icon='left arrow' labelPosition='left' />
-        <Button content='Next' icon='right arrow' labelPosition='right' />  
+        {/* <Button content='Previous' icon='left arrow' labelPosition='left' />
+        <Button content='Next' icon='right arrow' labelPosition='right' />   */}
+        <Button.Group>
+          <Button labelPosition='left' icon='left chevron' content='Previous' />
+          <Button icon='close' content='Not a planet' />
+          <Button icon='like' content='Planet' />
+          <Button labelPosition='right' icon='right chevron' content='Forward' />
+        </Button.Group>
         </div>
+
         <div><SomeForm /></div>
         <div className="Cards-listing">
           <Cards cardsList={cards} />
