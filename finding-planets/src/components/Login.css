@@ -1,0 +1,13 @@
+.container2{
+
+    justify-items: center;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.formCon{
+display: flex;
+flex-direction: column;
+}
