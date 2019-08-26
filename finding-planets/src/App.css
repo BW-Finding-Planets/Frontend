@@ -30,3 +30,12 @@
   color: #61dafb;
 }
 
+.Cards-listing {
+  margin: 3% 0;
+  width: 80% !important;
+}
+
+.ui.card.cards{
+  margin: 0 !important;
+  width: 100% !important;
+}

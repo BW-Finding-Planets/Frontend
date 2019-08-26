@@ -18,11 +18,12 @@ function App() {
           The Transit Light Curve
         </Header>
         <img src="https://www.cfa.harvard.edu/~avanderb/tutorial/hatp7.png" className="App-logo" alt="logo" />
-        <Container text>
-        <Card.Group>
+        <div className="Cards-listing">
+        
+
           <Cards cardsList={cards} />
-        </Card.Group>
-      </Container> 
+
+      </div> 
 
       </header>
     </div>

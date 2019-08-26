@@ -4,6 +4,8 @@ import { Card } from 'semantic-ui-react'
 
 const Cards = props => {
   console.log(props);
+
+  
   return (
     <div className="cards-list">
       {props.cardsList.map(card => {
