@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 import 'semantic-ui-css/semantic.min.css'
-import { Header, Card, Container, Grid } from 'semantic-ui-react'
+import { Header, Button } from 'semantic-ui-react'
 
 import data from "./data";
 import Cards from "./components/Card";
@@ -20,9 +20,11 @@ function App() {
         </Header>
         <img src="https://www.cfa.harvard.edu/~avanderb/tutorial/hatp7.png" className="App-logo" alt="logo" />
         
+        <div className="Buttons">
+        <Button content='Previous' icon='left arrow' labelPosition='left' />
+        <Button content='Next' icon='right arrow' labelPosition='right' />  
+        </div>
         <div><SomeForm /></div>
-
-
         <div className="Cards-listing">
           <Cards cardsList={cards} />
        </div> 

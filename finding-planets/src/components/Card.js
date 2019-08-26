@@ -13,8 +13,8 @@ const Cards = props => {
             <Card className="cards" key={card.id}>
                 <Card.Content>
                     <Card.Header>{card.name}</Card.Header>
-                    <Card.Meta>{card.period}</Card.Meta>
-                    <Card.Description>{card.equilibriumTempKelvin}</Card.Description>
+                    <Card.Meta>Orbital Period: {card.period}</Card.Meta>
+                    <Card.Description>Kelvins: {card.equilibriumTempKelvin}</Card.Description>
                 </Card.Content>
             </Card>
         );

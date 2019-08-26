@@ -12,7 +12,7 @@
 }
 
 .App-header {
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(227, 240, 250);
   min-height: 20vh;
   display: flex;
   flex-direction: column;
@@ -21,9 +21,10 @@
   font-size: calc(10px + 2vmin);
   color: black;
   width: 70%;
-  margin: 1% 15% 0 15%;
+  margin: 1% 15% 2% 15%;
   border-radius: 15px;
-  padding-top: 1%;
+  padding-top: 2%;
+  border: 1px solid grey;
 }
 
 .App-link {
@@ -38,4 +39,7 @@
 .ui.card.cards{
   margin: 0 !important;
   width: 100% !important;
+}
+.Buttons {
+  margin-bottom: 3% !important;
 }
