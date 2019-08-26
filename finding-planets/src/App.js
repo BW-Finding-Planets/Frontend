@@ -6,6 +6,7 @@ import { Header, Card, Container, Grid } from 'semantic-ui-react'
 
 import data from "./data";
 import Cards from "./components/Card";
+import SomeForm from "./components/Form"
 
 function App() {
 
@@ -18,12 +19,13 @@ function App() {
           The Transit Light Curve
         </Header>
         <img src="https://www.cfa.harvard.edu/~avanderb/tutorial/hatp7.png" className="App-logo" alt="logo" />
-        <div className="Cards-listing">
         
+        <div><SomeForm /></div>
 
+
+        <div className="Cards-listing">
           <Cards cardsList={cards} />
-
-      </div> 
+       </div> 
 
       </header>
     </div>
