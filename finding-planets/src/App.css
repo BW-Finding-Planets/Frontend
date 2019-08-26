@@ -8,18 +8,22 @@
   pointer-events: none;
   background-color: white;
   border-radius: 15px;
-  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(216, 216, 216);
   min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  width: 70%;
+  margin: 1% 15% 0 15%;
+  border-radius: 15px;
+  padding-top: 1%;
 }
 
 .App-link {

@@ -1,14 +1,19 @@
 import React from 'react';
 import './App.css';
 
+import 'semantic-ui-css/semantic.min.css'
+
+import { Header } from 'semantic-ui-react'
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="https://www.cfa.harvard.edu/~avanderb/tutorial/hatp7.png" className="App-logo" alt="logo" />
-        <p>
+      <Header as='h1'>
           The Transit Light Curve
-        </p>
+        </Header>
+        <img src="https://www.cfa.harvard.edu/~avanderb/tutorial/hatp7.png" className="App-logo" alt="logo" />
+        
 
       </header>
     </div>
