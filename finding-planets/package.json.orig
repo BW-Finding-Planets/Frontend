@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.3.3",
+<<<<<<< HEAD
     "@material-ui/icons": "^4.2.1",
+=======
+>>>>>>> origin/heorhii-siburov
     "axios": "^0.19.0",
     "formik": "^1.5.8",
     "react": "^16.9.0",
@@ -12,11 +15,14 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.0"
+<<<<<<< HEAD
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "yup": "^0.27.0"
+=======
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.0"
+>>>>>>> origin/heorhii-siburov
   },
   "scripts": {
     "start": "react-scripts start",
