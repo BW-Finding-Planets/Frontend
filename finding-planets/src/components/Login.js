@@ -47,7 +47,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
     <>
       <div className="container2">
         <Card className={classes.card}>
-          <h2>Login Page</h2>
+          <h2>Login </h2>
           <Form className="formCon">
             <label>Username</label>
             <Field type="text" name="username" placeholder="username..." />

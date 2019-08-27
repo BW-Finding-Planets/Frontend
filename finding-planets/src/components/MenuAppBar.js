@@ -14,14 +14,14 @@ import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1,
-  },
+    flexGrow: 1
+  }
 }));
 
 export default function MenuAppBar() {
@@ -36,6 +36,7 @@ export default function MenuAppBar() {
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
+
   }
 
   function handleClose() {
@@ -45,20 +46,31 @@ export default function MenuAppBar() {
   return (
     <div className={classes.root}>
       <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
+        {/* <FormControlLabel */}
+        {/*   control={ */}
+        {/*     <Switch */}
+        {/*       checked={auth} */}
+        {/*       onChange={handleChange} */}
+        {/*       aria-label="login switch" */}
+        {/*     /> */}
+        {/*   } */}
+        {/*   label={auth ? 'Logout' : 'Login'} */}
+        {/* /> */}
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Finding Planets
           </Typography>
-          {auth && (
+          {auth === false? (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -74,12 +86,12 @@ export default function MenuAppBar() {
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'right'
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'right'
                 }}
                 open={open}
                 onClose={handleClose}
@@ -88,6 +100,8 @@ export default function MenuAppBar() {
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
             </div>
+          ) : (
+            <></>
           )}
         </Toolbar>
       </AppBar>
