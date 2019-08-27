@@ -5,6 +5,7 @@ import './App.css';
 import MenuAppBar from './components/MenuAppBar';
 import FormikLoginForm from './components/Login';
 import SignUp from './components/SignUp'
+import AppPage from './components/AppPage'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
     <MenuAppBar />
     <Route exact path="/" component={FormikLoginForm} />
     <Route path ="/Sign_up" component = {SignUp} />
-
+    <Route path ="/AppPage" component = {AppPage} />
 
     </div>
 
