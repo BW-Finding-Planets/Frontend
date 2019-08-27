@@ -27,27 +27,24 @@ const useStyles = makeStyles({
     marginTop: '300px'
   },
   media: {
-    height: 200,
+    height: 200
   },
-  btn:
-  {
-  background: 'orange',
+  btn: {
+    background: 'orange'
   },
-  error:{
+  error: {
     color: 'red',
     fontSize: '.7rem'
-
   }
-
 });
 const LoginForm = ({ errors, touched, values, status }) => {
   const classes = useStyles();
-
+  console.log(values.history);
   return (
     <>
       <div className="container2">
         <Card className={classes.card}>
-          <h2>Login Page</h2>
+          <h2>Login </h2>
           <Form className="formCon">
             <label>Username</label>
             <Field type="text" name="username" placeholder="username..." />
@@ -62,6 +59,13 @@ const LoginForm = ({ errors, touched, values, status }) => {
 
             <Button className={classes.btn} type="submit">
               Login
+            </Button>
+            <label> Register of an Account here </label>
+            <Button
+              className={classes.btn}
+              onClick={() => values.history.push('/Sign_Up')}
+            >
+              Register
             </Button>
           </Form>
         </Card>
@@ -87,7 +91,7 @@ const FormikLoginForm = withFormik({
     axios
       .post('https://finding-planets.herokuapp.com/auth/login', values)
       .then(res => {
-        console.log("token", res.data)
+        console.log('token', res.data);
         localStorage.setItem('token', res.data.token);
         values.history.push('/');
 
