@@ -70,7 +70,7 @@ export default function MenuAppBar() {
           <Typography variant="h6" className={classes.title}>
             Finding Planets
           </Typography>
-          {auth === false? (
+          {auth === true? (
             <div>
               <IconButton
                 aria-label="account of current user"
