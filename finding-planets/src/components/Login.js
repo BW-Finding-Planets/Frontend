@@ -12,7 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import MenuAppBar from './MenuAppBar';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 import './Login.css';
@@ -45,6 +45,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
 
   return (
     <>
+      <MenuAppBar />
       <div className="container2">
         <Card className={classes.card}>
           <h2>Login Page</h2>

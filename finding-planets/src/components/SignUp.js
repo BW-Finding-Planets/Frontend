@@ -14,8 +14,9 @@ const SignUp = (props) => {
 
     console.log(props)
     return (
-        <div>
-            SignUp
+        <div className="sign-up">
+        
+            You are a new user?
             <Form>
                 <Field 
                 type="text" 
@@ -31,15 +32,16 @@ const SignUp = (props) => {
                 />
                 {props.touched.password && props.errors.password && <p>{props.errors.password}</p>}
 
-                {/* <Field 
+                <Field 
                 type="text" 
                 placeholder="password"
                 name="passwordConfirm"
                 />
-                 {props.touched.passwordConfirm && props.errors.passwordConfirm && <p>{props.errors.passwordConfirm}</p>} */}
+                 {props.touched.passwordConfirm && props.errors.passwordConfirm && <p>{props.errors.passwordConfirm}</p>}
 
-                <button>Create</button>
+                <button>Register</button>
             </Form>
+        
         </div>
     )
 }
@@ -59,9 +61,9 @@ const FormikSignUp = withFormik({
                                 .required("A password is important, you can't miss")
                                 .min(8, "Password  should be 8 characters minimum.")
                                 .matches(/(^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.{8,}))/, "Password must contain at least one uppercase character and one special character"),
-            // passwordConfirm: Yup.string().oneOf(
-            //     [Yup.ref('password')],
-            //     'Passwords do not match')
+            passwordConfirm: Yup.string().oneOf(
+                [Yup.ref('password')],
+                'Passwords do not match')
             }),
 
     handleSubmit(values, {setUser}){
