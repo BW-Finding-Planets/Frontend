@@ -12,12 +12,12 @@ function App() {
       <div className="App">
     <MenuAppBar />
     <Route exact path="/" component={FormikLoginForm} />
-    <SignUp />
+    <Route path ="/Sign_up" component = {SignUp} />
 
 
+    </div>
 
-      </div>
-    </Router>
+     </Router>
   );
 }
 
