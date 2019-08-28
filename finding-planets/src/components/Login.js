@@ -93,7 +93,7 @@ const FormikLoginForm = withFormik({
       .then(res => {
         console.log('token', res.data);
         localStorage.setItem('token', res.data.token);
-        values.history.push('/');
+        values.history.push('/AppPage');
 
         resetForm();
       })

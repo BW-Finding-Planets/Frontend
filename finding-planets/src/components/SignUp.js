@@ -3,7 +3,43 @@ import {Form, Field, withFormik} from 'formik'
 import * as Yup from "yup";
 import axios from 'axios';
 
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+
+import './Login.css';
+
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 500,
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    marginTop: '300px'
+  },
+  media: {
+    height: 200
+  },
+  btn: {
+    background: 'orange'
+  },
+  error: {
+    color: 'red',
+    fontSize: '.7rem'
+  }
+});
+
+
 const SignUp = (props) => {
+    const classes = useStyles();
     const [user, setUser] = useState([])
 
     useEffect(()=> {
@@ -14,32 +50,37 @@ const SignUp = (props) => {
 
     console.log(props)
     return (
-        <div>
-            SignUp
-            <Form>
-                <Field 
-                type="text" 
+        <div className = "container2">
+        <Card className={classes.card}>
+        <h2>SignUp</h2>
+
+
+        <Form className = "formCon">
+        <label>UserName</label>
+                <Field
+                type="text"
                 placeholder="username"
                 name="username"
                 />
-                {props.touched.username && props.errors.username && <p>{props.errors.username}</p>}
-
-                <Field 
-                type="text" 
+                {props.touched.username && props.errors.username && <p className={classes.error}>{props.errors.username}</p>}
+        <label>Password</label>
+                <Field
+                type="text"
                 placeholder="password"
                 name="password"
                 />
-                {props.touched.password && props.errors.password && <p>{props.errors.password}</p>}
+                {props.touched.password && props.errors.password && <p className={classes.error}>{props.errors.password}</p>}
 
-                {/* <Field 
-                type="text" 
+                {/* <Field
+                type="text"
                 placeholder="password"
                 name="passwordConfirm"
                 />
                  {props.touched.passwordConfirm && props.errors.passwordConfirm && <p>{props.errors.passwordConfirm}</p>} */}
 
-                <button>Create</button>
-            </Form>
+                <Button className={classes.btn} type= "submit"> Create</Button>
+        </Form>
+        </Card>
         </div>
     )
 }
@@ -50,6 +91,7 @@ const FormikSignUp = withFormik({
             username: values.username || '',
             password: values.password || '',
             // passwordConfirm: values.passwordConfirm || '',
+            history: values.history || '',
         }
     },
 
@@ -71,6 +113,8 @@ const FormikSignUp = withFormik({
             .then(res => {
                 // setUser(res.data)
                 console.log('user',res)
+                values.history.push('/');
+
             })
             .catch(err => console.log(err))
     }
