@@ -3,7 +3,7 @@ import React from "react";
 import { Card } from 'semantic-ui-react'
 
 const Cards = props => {
-  console.log(props);
+  // console.log(props);
 
   
   return (

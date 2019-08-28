@@ -14,18 +14,29 @@ function AppPage() {
   const [starobj, setStarobj] = useState([]);
   const [mainID, setMainID] = useState(1);
 
-  const nextID = () => {
+  // Functions foe next/previous buttons
+  const nextID = (mainID) => {
+    if (mainID < 10) 
+    {
     setMainID(mainID => mainID + 1);
-  };
-  const previousID = () => {
-    setMainID(mainID => mainID - 1);
+    } else {
+      setMainID(mainID = 1);
+    }
   };
 
+  const previousID = (mainID) => {
+    if (mainID <= 1) 
+    {
+    setMainID(mainID = 10);
+    } else {
+      setMainID(mainID => mainID - 1);
+    }
+  };
+  // End of functions foe next/previous buttons
 
+  // Axios request part
     useEffect(() => {
-      // console.log("testes")
       const token = localStorage.getItem('token');
-      // console.log(token)
 
     axios
       .get(`https://finding-planets.herokuapp.com/stars/`, {
@@ -42,6 +53,7 @@ function AppPage() {
       });
   }, []);
   console.log("ID counter value: ", mainID)
+  // End of Axios request part
 
   return (
     <div className="App">
