@@ -39,7 +39,8 @@ const useStyles = makeStyles({
     fontSize: '.7rem'
   }
 });
-const LoginForm = ({ errors, touched, values, status }) => {
+const LoginForm = (props) => {
+  console.log('props in Login', props)
   const classes = useStyles();
 
   return (
@@ -50,13 +51,13 @@ const LoginForm = ({ errors, touched, values, status }) => {
           <Form className="formCon">
             <label>Username</label>
             <Field type="text" name="username" placeholder="username..." />
-            {touched.username && errors.username && (
-              <p className={classes.error}>{errors.username}</p>
+            {props.touched.username && props.errors.username && (
+              <p className={classes.error}>{props.errors.username}</p>
             )}
             <label>Password</label>
             <Field type="password" name="password" placeholder="password.." />
-            {touched.password && errors.password && (
-              <p className={classes.error}>{errors.password}</p>
+            {props.touched.password && props.errors.password && (
+              <p className={classes.error}>{props.errors.password}</p>
             )}
 
             <Button className={classes.btn} type="submit">
@@ -65,7 +66,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
             <label> Register of an Account here </label>
             <Button
               className={classes.btn}
-              onClick={() => values.history.push('/Sign_Up')}
+              onClick={() => props.values.history.push('/Sign_Up')}
             >
               Register
             </Button>
@@ -89,16 +90,17 @@ const FormikLoginForm = withFormik({
     username: Yup.string().required('Please enter a username'),
     password: Yup.string().required('Enter a password')
   }),
-  handleSubmit(values, { resetForm, setStatus }) {
+  handleSubmit(values, {props}) {
     console.log('Submit', values);
+    delete values.history
     axios
       .post('https://finding-planets.herokuapp.com/auth/login', values)
       .then(res => {
         console.log('res', res);
         localStorage.setItem('token', res.data.token);
-        values.history.push('/AppPage');
-
-        resetForm();
+        props.history.history.push('/createprofile');
+        props.setUserId(res.data.id);
+        
       })
 
       .catch(err => console.log(err));
