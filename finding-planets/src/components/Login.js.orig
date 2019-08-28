@@ -12,7 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import MenuAppBar from './MenuAppBar';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 import './Login.css';
@@ -28,28 +28,32 @@ const useStyles = makeStyles({
     width: '400px',
   },
   media: {
-    height: 200,
+    height: 200
   },
+<<<<<<< HEAD
+  btn: {
+    background: 'orange'
+=======
   btn:
   {
   marginTop: '30px',
   background: 'orange',
+>>>>>>> origin/hong-tran
   },
-  error:{
+  error: {
     color: 'red',
     fontSize: '.7rem'
-
   }
-
 });
 const LoginForm = ({ errors, touched, values, status }) => {
   const classes = useStyles();
-
+  console.log(values.history);
   return (
     <>
+      <MenuAppBar />
       <div className="container2">
         <Card className={classes.card}>
-          <h2>Login Page</h2>
+          <h2>Login </h2>
           <Form className="formCon">
             <label>Username</label>
             <Field type="text" name="username" placeholder="username..." />
@@ -96,7 +100,7 @@ const FormikLoginForm = withFormik({
     axios
       .post('https://finding-planets.herokuapp.com/auth/login', values)
       .then(res => {
-        console.log("token", res.data)
+        console.log('token', res.data);
         localStorage.setItem('token', res.data.token);
         values.history.push('/AppPage');
 

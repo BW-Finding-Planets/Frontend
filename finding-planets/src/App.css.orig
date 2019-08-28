@@ -3,6 +3,7 @@
   
 }
 
+<<<<<<< HEAD
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   /* height: 40vmin; */
@@ -27,11 +28,12 @@
   padding-top: 2%;
   border: 1px solid grey;
 }
+=======
 
-.App-link {
-  color: #61dafb;
-}
+>>>>>>> origin/hong-tran
 
+
+<<<<<<< HEAD
 .Cards-listing {
   margin: 3% 0;
   width: 80% !important;
@@ -44,3 +46,5 @@
 .Buttons {
   margin-bottom: 3% !important;
 }
+=======
+>>>>>>> origin/hong-tran
