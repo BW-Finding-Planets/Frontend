@@ -133,10 +133,11 @@ const FormikSignUp = withFormik({
             .post(`https://finding-planets.herokuapp.com/auth/register`, values)
             .then(res => {
                 console.log('user',res)
+                const userId = res.data.id
                 
             })
             .catch(err => console.log('here', err))
-        props.history.push("/")
+        props.history.push("/myprofile")
     }
 })(SignUp)
 
