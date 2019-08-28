@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     error:{
       color: 'red',
       fontSize: '.7rem'
-  
+
     }
 })
 
@@ -49,35 +49,35 @@ const SignUp = (props) => {
     console.log(props)
     return (
         <>
-        <MenuAppBar />
+
         <Link className="check-user" to="/login">
             <p>Already a user?</p>
         </Link>
-        
+
         <div className="container2">
             <Card className={classes.card}>
                 <h2>Register to discover planets</h2>
-               
+
                 <Form className="formCon">
                     <label>Username</label>
-                    <Field 
-                    type="text" 
+                    <Field
+                    type="text"
                     placeholder="username"
                     name="username"
                     />
                     {props.touched.username && props.errors.username && <p className={classes.error}>{props.errors.username}</p>}
 
                     <label>Password</label>
-                    <Field 
-                    type="text" 
+                    <Field
+                    type="text"
                     placeholder="password"
                     name="password"
                     />
                     {props.touched.password && props.errors.password && <p className={classes.error}>{props.errors.password}</p>}
 
                     <label>Confirm Password</label>
-                    <Field 
-                    type="text" 
+                    <Field
+                    type="text"
                     placeholder="password"
                     name="passwordConfirm"
                     />
@@ -96,9 +96,9 @@ const FormikSignUp = withFormik({
         return {
             username: values.username || '',
             password: values.password || '',
-            // passwordConfirm: values.passwordConfirm || '',
-            history: values.history || '',
-        }
+            passwordConfirm: values.passwordConfirm || '',
+            history: values.history || ''
+        };
     },
 
     validationSchema: Yup.object().shape({
@@ -113,16 +113,19 @@ const FormikSignUp = withFormik({
             }),
 
     handleSubmit(values, {setUser}){
+        delete values.passwordConfirm
+
         console.log(values)
         axios
             .post(`https://finding-planets.herokuapp.com/auth/register`, values)
             .then(res => {
                 // setUser(res.data)
                 console.log('user',res)
-                values.history.push('/');
+
 
             })
             .catch(err => console.log(err))
+
     }
 })(SignUp)
 
