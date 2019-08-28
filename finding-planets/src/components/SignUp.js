@@ -36,19 +36,9 @@ const useStyles = makeStyles({
 
 
 const SignUp = (props) => {
-    const [user, setUser] = useState({username: '', password: ''})
+    console.log( 'props in SignUp', props)
+    // const [user, setUser] = useState({username: '', password: ''})
     const classes = useStyles();
-
-
-    console.log('check values',props.values)
-
-
-
-    // useEffect(()=> {
-    //     if(props.status) {
-    //         setUser([...user, props.status])
-    //     }
-    // })
 
     console.log(props)
     return (
@@ -125,16 +115,23 @@ const FormikSignUp = withFormik({
         console.log('checkkkk',props)
         delete values.passwordConfirm
         delete values.history
+        
         console.log('values in handleSubmit',values)
-            axios
+        axios
             .post(`https://finding-planets.herokuapp.com/auth/register`, values)
             .then(res => {
-
+                const userId = res.data.id
                 console.log('user',res)
-
+                
+                props.setNewUser(userId)
+                
             })
             .catch(err => console.log('here', err))
-        props.history.push("/")
+
+        // console.log(props.setNewUser())
+        
+        props.history.history.push("/myprofile")
+        
     }
 })(SignUp)
 
