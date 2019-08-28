@@ -42,7 +42,7 @@ function AppPage() {
       <Header as='h1'>
           The Transit Light Curve
         </Header>
-        <img src="https://www.cfa.harvard.edu/~avanderb/tutorial/hatp7.png" className="App-logo" alt="logo" />
+        <img src={require('../pics/139250626.png')} className="Curve-Graph" alt="Light Curve Graph" />
         
         <div className="Buttons">
         <Button.Group>
