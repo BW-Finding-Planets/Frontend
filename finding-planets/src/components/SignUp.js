@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     error:{
       color: 'red',
       fontSize: '.7rem'
-  
+
     }
 })
 
@@ -42,7 +42,7 @@ const SignUp = (props) => {
 
     console.log('check values',props.values)
 
-    
+
 
     // useEffect(()=> {
     //     if(props.status) {
@@ -57,23 +57,23 @@ const SignUp = (props) => {
         <Link className="check-user" to="/login">
             <p>Already a user?</p>
         </Link>
-        
+
         <div className="container2">
             <Card className={classes.card}>
                 <h2>Register to discover planets</h2>
-               
+
                 <Form className="formCon">
                     <label>Username</label>
-                    <Field 
-                    type="text" 
+                    <Field
+                    type="text"
                     placeholder="username"
                     name="username"
                     />
                     {props.touched.username && props.errors.username && <p className={classes.error}>{props.errors.username}</p>}
 
                     <label>Password</label>
-                    <Field 
-                    type="text" 
+                    <Field
+                    type="text"
                     placeholder="password"
                     name="password"
                     />
@@ -81,7 +81,7 @@ const SignUp = (props) => {
 
                     <label>Confirm Password</label>
                     <Field
-                    type="text" 
+                    type="text"
                     placeholder="password"
                     name="passwordConfirm"
                     />
@@ -89,7 +89,7 @@ const SignUp = (props) => {
 
                     <Button className={classes.btn} type="submit">Register</Button>
                 </Form>
-                     
+
             </Card>
         </div>
         </>
@@ -97,7 +97,7 @@ const SignUp = (props) => {
 }
 
 const FormikSignUp = withFormik({
-    
+
     mapPropsToValues(values){
 
         return {
@@ -129,9 +129,9 @@ const FormikSignUp = withFormik({
             axios
             .post(`https://finding-planets.herokuapp.com/auth/register`, values)
             .then(res => {
-         
+
                 console.log('user',res)
-                
+
             })
             .catch(err => console.log('here', err))
         props.history.push("/")
