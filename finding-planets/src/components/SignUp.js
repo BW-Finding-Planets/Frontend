@@ -36,15 +36,23 @@ const useStyles = makeStyles({
 
 
 const SignUp = (props) => {
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({username: '', password: ''})
     const classes = useStyles();
+    // const [passwordCheck, setPasswordCheck] = useState('')
+    // const [passError, setPassError] = useState(false)
 
+    // handle those 2 separetly 
+    //then 
 
-    useEffect(()=> {
-        if(props.status) {
-            setUser([...user, props.status])
-        }
-    })
+    console.log('check values',props.values)
+
+    
+
+    // useEffect(()=> {
+    //     if(props.status) {
+    //         setUser([...user, props.status])
+    //     }
+    // })
 
     console.log(props)
     return (
@@ -76,15 +84,16 @@ const SignUp = (props) => {
                     {props.touched.password && props.errors.password && <p className={classes.error}>{props.errors.password}</p>}
 
                     <label>Confirm Password</label>
-                    <Field 
+                    <Field
                     type="text" 
                     placeholder="password"
                     name="passwordConfirm"
                     />
                     {props.touched.passwordConfirm && props.errors.passwordConfirm && <p className={classes.error}>{props.errors.passwordConfirm}</p>}
-
+           
                     <Button className={classes.btn} type="submit">Register</Button>
                 </Form>
+                     
             </Card>
         </div>
         </>
@@ -92,11 +101,14 @@ const SignUp = (props) => {
 }
 
 const FormikSignUp = withFormik({
+    
     mapPropsToValues(values){
+
         return {
             username: values.username || '',
             password: values.password || '',
-            // passwordConfirm: values.passwordConfirm || '',
+            passwordConfirm: values.passwordConfirm || '',
+            history: values.history || ''
         }
     },
 
@@ -107,19 +119,24 @@ const FormikSignUp = withFormik({
                                 .min(8, "Password  should be 8 characters minimum.")
                                 .matches(/(^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.{8,}))/, "Password must contain at least one uppercase character and one special character"),
             passwordConfirm: Yup.string().oneOf(
-                [Yup.ref('password')],
-                'Passwords do not match')
+            [Yup.ref('password')],
+            'Passwords do not match')
             }),
 
-    handleSubmit(values, {setUser}){
-        console.log(values)
-        axios
+
+    handleSubmit(values, {props}){
+        console.log('checkkkk',props)
+        delete values.passwordConfirm
+        delete values.history
+        console.log('values in handleSubmit',values)
+            axios
             .post(`https://finding-planets.herokuapp.com/auth/register`, values)
             .then(res => {
-                // setUser(res.data)
                 console.log('user',res)
+                
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log('here', err))
+        props.history.push("/")
     }
 })(SignUp)
 
