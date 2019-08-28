@@ -24,13 +24,15 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     flexDirection: 'column',
     flexWrap: 'wrap',
-    marginTop: '300px'
+    marginTop: '300px',
+    width: '400px',
   },
   media: {
     height: 200,
   },
   btn:
   {
+  marginTop: '30px',
   background: 'orange',
   },
   error:{

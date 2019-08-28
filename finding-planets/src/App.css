@@ -3,33 +3,6 @@
   
 }
 
-.sign-up{
-  background-color: #FAFDB3;
-  width: 30%;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-}
 
-form {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  align-items: center;
-  
-}
-
-input {
-  padding: 7px;
-  margin: 5px;
-  width: 70%;
-
-}
-
-button {
-  margin-top: 20px;
-  padding: 5px 20px 5px 20px;
-  border-radius: 10px;
-}
 
 

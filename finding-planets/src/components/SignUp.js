@@ -2,9 +2,43 @@ import React, {useState, useEffect} from 'react';
 import {Form, Field, withFormik} from 'formik'
 import * as Yup from "yup";
 import axios from 'axios';
+import './Signup.css';
+import Card from '@material-ui/core/Card';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import MenuAppBar from './MenuAppBar';
+import { Link } from 'react-router-dom';
+
+const useStyles = makeStyles({
+    card: {
+      maxWidth: 500,
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+      marginTop: '220px',
+      width: '400px',
+    },
+    media: {
+      height: 200,
+    },
+    btn:
+    {
+    marginTop: '30px',
+    background: 'orange',
+    },
+    error:{
+      color: 'red',
+      fontSize: '.7rem'
+  
+    }
+})
+
 
 const SignUp = (props) => {
     const [user, setUser] = useState([])
+    const classes = useStyles();
+
 
     useEffect(()=> {
         if(props.status) {
@@ -14,35 +48,46 @@ const SignUp = (props) => {
 
     console.log(props)
     return (
-        <div className="sign-up">
+        <>
+        <MenuAppBar />
+        <Link className="check-user" to="/login">
+            <p>Already a user?</p>
+        </Link>
         
-            You are a new user?
-            <Form>
-                <Field 
-                type="text" 
-                placeholder="username"
-                name="username"
-                />
-                {props.touched.username && props.errors.username && <p>{props.errors.username}</p>}
+        <div className="container2">
+            <Card className={classes.card}>
+                <h2>Register to discover planets</h2>
+               
+                <Form className="formCon">
+                    <label>Username</label>
+                    <Field 
+                    type="text" 
+                    placeholder="username"
+                    name="username"
+                    />
+                    {props.touched.username && props.errors.username && <p className={classes.error}>{props.errors.username}</p>}
 
-                <Field 
-                type="text" 
-                placeholder="password"
-                name="password"
-                />
-                {props.touched.password && props.errors.password && <p>{props.errors.password}</p>}
+                    <label>Password</label>
+                    <Field 
+                    type="text" 
+                    placeholder="password"
+                    name="password"
+                    />
+                    {props.touched.password && props.errors.password && <p className={classes.error}>{props.errors.password}</p>}
 
-                <Field 
-                type="text" 
-                placeholder="password"
-                name="passwordConfirm"
-                />
-                 {props.touched.passwordConfirm && props.errors.passwordConfirm && <p>{props.errors.passwordConfirm}</p>}
+                    <label>Confirm Password</label>
+                    <Field 
+                    type="text" 
+                    placeholder="password"
+                    name="passwordConfirm"
+                    />
+                    {props.touched.passwordConfirm && props.errors.passwordConfirm && <p className={classes.error}>{props.errors.passwordConfirm}</p>}
 
-                <button>Register</button>
-            </Form>
-        
+                    <Button className={classes.btn} type="submit">Register</Button>
+                </Form>
+            </Card>
         </div>
+        </>
     )
 }
 
