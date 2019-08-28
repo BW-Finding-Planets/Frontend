@@ -120,17 +120,17 @@ const FormikSignUp = withFormik({
         axios
             .post(`https://finding-planets.herokuapp.com/auth/register`, values)
             .then(res => {
-                const userId = res.data.id
+                const id = res.data.id
                 console.log('user',res)
                 
-                props.setNewUser(userId)
+                props.setUserId(id)
                 
             })
             .catch(err => console.log('here', err))
 
-        // console.log(props.setNewUser())
         
-        props.history.history.push("/myprofile")
+        
+        props.history.history.push("/")
         
     }
 })(SignUp)
