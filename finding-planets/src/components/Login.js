@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Field, withFormik, Formik } from 'formik';
 import * as Yup from 'yup';
-// import UserCard from './UserCard';
+
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -94,7 +94,7 @@ const FormikLoginForm = withFormik({
     axios
       .post('https://finding-planets.herokuapp.com/auth/login', values)
       .then(res => {
-        console.log('token', res.data);
+        console.log('res', res);
         localStorage.setItem('token', res.data.token);
         values.history.push('/AppPage');
 

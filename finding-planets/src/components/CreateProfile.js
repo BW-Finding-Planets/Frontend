@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CreateProfiel = () => {
+const CreateProfile = () => {
 
     return (
         <div></div>
