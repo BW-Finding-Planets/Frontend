@@ -25,22 +25,19 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     flexWrap: 'wrap',
     marginTop: '300px',
-    width: '400px',
+    width: '400px'
   },
   media: {
-    height: 200,
+    height: 200
   },
-  btn:
-  {
-  marginTop: '30px',
-  background: 'orange',
+  btn: {
+    marginTop: '30px',
+    background: 'orange'
   },
-  error:{
+  error: {
     color: 'red',
     fontSize: '.7rem'
-
   }
-
 });
 const LoginForm = ({ errors, touched, values, status }) => {
   const classes = useStyles();
@@ -93,10 +90,11 @@ const FormikLoginForm = withFormik({
     password: Yup.string().required('Enter a password')
   }),
   handleSubmit(values, { resetForm, setStatus }) {
+    console.log('Submit', values);
     axios
       .post('https://finding-planets.herokuapp.com/auth/login', values)
       .then(res => {
-        console.log("token", res.data)
+        console.log('token', res.data);
         localStorage.setItem('token', res.data.token);
         values.history.push('/AppPage');
 
