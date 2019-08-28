@@ -12,13 +12,20 @@ function AppPage() {
 
   const [cards, setCards] = useState(data);
   const [starobj, setStarobj] = useState([]);
+  const [mainID, setMainID] = useState(1);
 
+  const nextID = () => {
+    setMainID(mainID => mainID + 1);
+  };
+  const previousID = () => {
+    setMainID(mainID => mainID - 1);
+  };
 
 
     useEffect(() => {
-      console.log("testes")
+      // console.log("testes")
       const token = localStorage.getItem('token');
-      console.log(token)
+      // console.log(token)
 
     axios
       .get(`https://finding-planets.herokuapp.com/stars/`, {
@@ -34,7 +41,7 @@ function AppPage() {
           console.log("Oh-oh, something wrong", error);
       });
   }, []);
-
+  console.log("ID counter value: ", mainID)
 
   return (
     <div className="App">
@@ -42,14 +49,24 @@ function AppPage() {
       <Header as='h1'>
           The Transit Light Curve
         </Header>
-        <img src={require('../pics/1.png')} className="Curve-Graph" alt="Light Curve Graph" />
+        <img src={require(`../pics/${mainID}.png`)} className="Curve-Graph" alt="Light Curve Graph" />
         
         <div className="Buttons">
         <Button.Group>
-          <Button labelPosition='left' icon='left chevron' content='Previous' />
+          <Button 
+            labelPosition='left' 
+            icon='left chevron' 
+            content='Previous' 
+            onClick={() => previousID(mainID)}
+          />
           <Button icon='close' content='Not a planet' />
           <Button icon='like' content='Planet' />
-          <Button labelPosition='right' icon='right chevron' content='Forward' />
+          <Button
+            labelPosition='right' 
+            icon='right chevron' 
+            content='Forward' 
+            onClick={() => nextID(mainID)}
+            />
         </Button.Group>
         </div>
 
