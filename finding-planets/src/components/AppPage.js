@@ -13,7 +13,7 @@ function AppPage() {
   const [starobj, setStarobj] = useState([]);
   const [starStat, setStarStat] = useState([]);
   const [mainID, setMainID] = useState(1);
- 
+  // const [statVal, setStatVal] = useState(0);
 
 
   // Functions for next/previous buttons
@@ -98,11 +98,17 @@ function AppPage() {
 
 
   let totalRate = oneStatElement.reduce((previousValue, vote) => {
-    return previousValue + (vote.neutralLikely * 2) + (vote.someWhatLikely * 3) + (vote.someWhatUnLikely * 4) + (vote.veryLikely * 5) + (vote.veryUnLikely * 1);
+    return previousValue + (vote.veryUnLikely * 1) + (vote.neutralLikely * 2) + (vote.someWhatLikely * 3) + (vote.someWhatUnLikely * 4) + (vote.veryLikely * 5) ;
   }, 0);
-  // console.log("The total vote:", totalRate);
+  
+  let totalVotes = oneStatElement.reduce((previousValue, vote) => {
+    return previousValue + (vote.veryUnLikely) + (vote.neutralLikely) + (vote.someWhatLikely) + (vote.someWhatUnLikely) + (vote.veryLikely) ;
+  }, 0);
 
-  let finalRate = (totalRate);
+  
+  let finalRate = (totalRate / totalVotes);
+
+  
 
   // End Preparing
 
