@@ -21,10 +21,10 @@ const StarCard = props => {
     return (
         <Item.Group >
         <Item>
-          <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+          <Item.Image size='tiny' src={require(`../images/star${props.id}.jpg`)} />
            
           <Item.Content>
-            <Item.Header>`${props.tceid}`</Item.Header>
+            <Item.Header>{props.tceid}</Item.Header>
             <Item.Meta>
               <span className='price'>$1200</span>
               <span className='stay'>1 Month</span>

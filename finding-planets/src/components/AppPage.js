@@ -105,6 +105,7 @@ function AppPage() {
           <Infocard 
            key={data.id}
            tceid={data.tceid}
+           id={data.id}
           />
         </div>
       );
