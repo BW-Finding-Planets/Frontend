@@ -96,7 +96,7 @@ function AppPage() {
   });
   console.log("Current stat element", oneStatElement);
 
-
+    //Getting grade from Object of Array
   let totalRate = oneStatElement.reduce((previousValue, vote) => {
     return previousValue + (vote.veryUnLikely * 1) + (vote.neutralLikely * 2) + (vote.someWhatLikely * 3) + (vote.someWhatUnLikely * 4) + (vote.veryLikely * 5) ;
   }, 0);
@@ -105,10 +105,25 @@ function AppPage() {
     return previousValue + (vote.veryUnLikely) + (vote.neutralLikely) + (vote.someWhatLikely) + (vote.someWhatUnLikely) + (vote.veryLikely) ;
   }, 0);
 
-  
   let finalRate = (totalRate / totalVotes);
+  // // let finalRate;
 
-  
+  // // if (totalVotes = 0) {
+  // //   finalRate = 0;
+  // // } else {
+  // //   finalRate = (totalRate / totalVotes);
+  // // }
+
+  // let finalRates = (totalRate, totalVotes) => {
+  //   if (totalVotes = 0) 
+  //   {
+  //     return finalRates = 0;
+  //   } else {
+  //     return finalRates = (totalRate / totalVotes);
+  //   }
+  // };
+  // finalRates(totalRate, totalVotes);
+  // console.log("Current stat VAAAAL", finalRates);
 
   // End Preparing
 
