@@ -5,16 +5,29 @@ import { Button, Form } from 'semantic-ui-react'
 
 const SomeForm = props => {
 
+  console.log("ololololo", props.mainID)
+
+  const options = [
+    { key: 'Star1', text: 'Star 139250626', value: 1 },
+    { key: 'Star2', text: 'Star 139281803', value: 2 },
+    { key: 'Star3', text: 'Star 139285666', value: 3 },
+    { key: 'Star4', text: 'Star 139285666', value: 4 },
+    { key: 'Star5', text: 'Star 139285669', value: 5 },
+    { key: 'Star6', text: 'Star 139300891', value: 6 },
+    { key: 'Star7', text: 'Star 139300891', value: 7 },
+    { key: 'Star8', text: 'Star 139370701', value: 8 },
+    { key: 'Star9', text: 'Star 140609384', value: 9 },
+    { key: 'Star10', text: 'Star 140659980', value: 10 }
+  ]
+
   return (
-    <Form>
-        <Form.Field>
-            <label htmlFor="role">Choose your star</label>
-            <input
-                type="text"
-                name="star"
-                placeholder="Some star name here"
-            />
-        </Form.Field>       
+    <Form>  
+        <Form.Select
+            fluid
+            label='Choose your star'
+            options={options}
+            placeholder='Star name here'
+          />
       <Button type='submit'>Submit</Button>
       </Form>
   );

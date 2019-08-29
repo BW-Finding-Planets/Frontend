@@ -90,7 +90,14 @@ function AppPage() {
         </Button.Group>
         </div>
 
-       <div><SomeForm /></div>
+       {/* <div>
+         <SomeForm mainID={mainID}/>
+       </div> */}
+
+       <div>
+         <SomeForm mainID={mainID} />
+       </div>
+
        <div className="Cards-listing">
         {oneElement.map(data => {
       return (
