@@ -105,25 +105,19 @@ function AppPage() {
     return previousValue + (vote.veryUnLikely) + (vote.neutralLikely) + (vote.someWhatLikely) + (vote.someWhatUnLikely) + (vote.veryLikely) ;
   }, 0);
 
-  let finalRate = (totalRate / totalVotes);
-  // // let finalRate;
+  let finalRate;
 
-  // // if (totalVotes = 0) {
-  // //   finalRate = 0;
-  // // } else {
-  // //   finalRate = (totalRate / totalVotes);
-  // // }
+  let finalRates = (totalRate, totalVotes) => {
+    if (totalVotes === 0) 
+    {
+      return finalRate = 0;
+    } else {
+      return finalRate = (totalRate / totalVotes);
+    }
+  };
 
-  // let finalRates = (totalRate, totalVotes) => {
-  //   if (totalVotes = 0) 
-  //   {
-  //     return finalRates = 0;
-  //   } else {
-  //     return finalRates = (totalRate / totalVotes);
-  //   }
-  // };
-  // finalRates(totalRate, totalVotes);
-  // console.log("Current stat VAAAAL", finalRates);
+  finalRate = finalRates(totalRate, totalVotes);
+  console.log("Current stat VAAAAL", finalRate);
 
   // End Preparing
 
