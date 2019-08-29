@@ -14,6 +14,8 @@ function App() {
   const [userId, setUserId] = useState()
 
   console.log('id', userId)
+  const create = 'Create Profile';
+  const edit = 'Edit Profile';
 
 
   return (
@@ -39,7 +41,13 @@ function App() {
     <Route
       path ="/createprofile"
       render = {props=> {
-        return <CreateProfile props={props} userId={userId}/>
+        return <CreateProfile props={props} button = {create}/>
+      }}
+    />
+    <Route
+      path ="/editprofile"
+      render = {props=> {
+        return <CreateProfile props={props} button = {edit}/>
       }}
     />
 

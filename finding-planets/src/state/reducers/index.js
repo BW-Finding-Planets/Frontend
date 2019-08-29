@@ -1,7 +1,8 @@
 import {
   FETCH_USER_DATA_START,
   FETCH_USER_DATA_SUCCESS,
-  FETCH_USER_DATA_FAILURE
+  FETCH_USER_DATA_FAILURE,
+  SET_ID
 } from '../actions/index';
 
 const initialState = {
@@ -10,7 +11,7 @@ const initialState = {
   lastName: '',
   email: '',
   profession: '',
-  username: '',
+  username: ''
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -27,6 +28,8 @@ export const userReducer = (state = initialState, action) => {
         profession: action.payload.profession,
         username: action.payload.username
       };
+    case SET_ID:
+      return { ...state, id: action.payload };
     default:
       return { ...state };
   }

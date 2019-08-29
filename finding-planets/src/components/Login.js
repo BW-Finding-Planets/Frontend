@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Field, withFormik, Formik } from 'formik';
 import * as Yup from 'yup';
+import {connect} from 'react-redux';
+import { storeUserId } from '../state/actions/index';
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -39,9 +41,10 @@ const useStyles = makeStyles({
     fontSize: '.7rem'
   }
 });
-const LoginForm = (props) => {
-  console.log('props in Login', props)
+const LoginForm = (props, { status }) => {
+  console.log('props in Login', props);
   const classes = useStyles();
+
 
   return (
     <>
@@ -90,21 +93,27 @@ const FormikLoginForm = withFormik({
     username: Yup.string().required('Please enter a username'),
     password: Yup.string().required('Enter a password')
   }),
-  handleSubmit(values, {props}) {
+  handleSubmit(values, { props, setStatus }) {
     console.log('Submit', values);
-    delete values.history
+    delete values.history;
     axios
       .post('https://finding-planets.herokuapp.com/auth/login', values)
       .then(res => {
         console.log('res', res);
         localStorage.setItem('token', res.data.token);
-        props.history.history.push('/createprofile');
-        props.setUserId(res.data.id);
 
+        props.setUserId(res.data.id);
+        setStatus(res.data.id);
+        props.storeUserId(res.data.id)
+        props.history.history.push('/createprofile');
       })
+
 
       .catch(err => console.log(err));
   }
 })(LoginForm);
 
-export default FormikLoginForm;
+export default connect(
+  null,
+  { storeUserId }
+)(FormikLoginForm);
