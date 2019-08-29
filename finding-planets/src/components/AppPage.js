@@ -167,10 +167,10 @@ function AppPage() {
 
           <Infocard 
            key={data.id}
-           ticid={data.ticid}
+           ticid_x={data.ticid_x}
            id={data.id}
            InsolationFlux={data.InsolationFlux}
-           ratioSemiMajorAxisToStarRadius={data.ratioSemiMajorAxisToStarRadius}
+           star_radius={data.star_radius}
            starTeffKelvin={data.starTeffKelvin}
            magnitude={data.magnitude}
            luminosity={data.luminosity}

@@ -21,16 +21,16 @@ const StarCard = props => {
          
            
           <Item.Content>
-            <Item.Header>Star {props.ticid}</Item.Header>
+            <Item.Header>Star {props.ticid_x}</Item.Header>
             <Item.Meta>
               <span className='price'>Radius</span>
-              <span className='stay'>{props.ratioSemiMajorAxisToStarRadius}</span>
+              <span className='stay'>{props.star_radius}</span>
             </Item.Meta>
             <p>Insolation Flux: {props.InsolationFlux}</p>
             <p>magnitude: {props.magnitude}</p>   
             <p>luminosity: {props.luminosity}</p>     
             <p>star_mass: {props.star_mass}</p>     
-            <p>star_radius: {props.ratioSemiMajorAxisToStarRadius}</p>     
+            <p>star_radius: {props.star_radius}</p>     
             <p>constellation: {props.constellation}</p>     
             <p>rightascension: {props.rightascension}</p>     
             <p>declination: {props.declination}</p>   
