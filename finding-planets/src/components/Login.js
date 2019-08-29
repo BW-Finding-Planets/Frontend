@@ -43,9 +43,7 @@ const LoginForm = (props) => {
   console.log('props in Login', props)
   const classes = useStyles();
 
-  useEffect(()=> {
-    props.getUsers()
-  }, [])
+ 
 
   return (
     <>

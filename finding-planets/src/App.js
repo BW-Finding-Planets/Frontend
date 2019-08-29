@@ -13,22 +13,10 @@ import Axios from 'axios'
 
 function App() {
   const [userId, setUserId] = useState()
-  const [userList,setUserList] = useState([])
+  
 
   console.log('id', userId)
 
-  const getUsers = () => {
-        Axios
-          .get(`https://finding-planets.herokuapp.com/users`, {
-              headers: {
-                  Authorization: localStorage.getItem('token')}})
-          .then(res => {
-              console.log('list of users',res)
-              setUserList(res.data)
-              
-          })
-          .catch(err => console.log(err.response))
- } 
 
   return (
     <Router>
@@ -38,7 +26,9 @@ function App() {
     <Route 
       exact path="/" 
       render = {props => {
-        return <FormikLoginForm  history={props} setUserId={setUserId} getUsers={getUsers} />
+        return <FormikLoginForm  history={props} setUserId={setUserId} 
+        
+        />
         }}
     />
     
@@ -54,8 +44,8 @@ function App() {
       path ="/createprofile" 
       render = {props=> {
         console.log('props in render', props)
-        const initialValue=userList.find(user => user.id == userId)
-        return <CreateProfile props={props} userId={userId} initialValue={initialValue}/>
+        return <CreateProfile props={props} userId={userId} 
+        />
       }}   
     />
 
@@ -63,8 +53,8 @@ function App() {
       path ="/editprofile" 
       render = {props=> {
         console.log('props in render', props)
-        const initialValue=userList.find(user => user.id == userId)
-        return <EditProfile props={props} userId={userId} initialValue={initialValue}/>
+        return <EditProfile props={props} userId={userId} 
+        />
       }}   
     />
 
