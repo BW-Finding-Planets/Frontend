@@ -1,0 +1,46 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    align-items: center;
+    
+  }
+  
+input {
+    padding: 5px;
+    /* margin: 5px; */
+    width: 70%;
+  
+  }
+
+label {
+    margin-top: 12px;
+}
+  
+button {
+    margin-top: 20px;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+  }
+
+.container2{
+
+    justify-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: -150px;
+   
+
+}
+
+.formCon{
+display: flex;
+flex-direction: column;
+}
+
+p{
+    color: white;
+    /* text-align: right; */
+    margin-right: 50px;
+}

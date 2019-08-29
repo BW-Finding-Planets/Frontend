@@ -44,7 +44,7 @@ const SignUp = (props) => {
     return (
         <>
 
-        <Link className="check-user" to="/login">
+        <Link className="check-user" to="/">
             <p>Already a user?</p>
         </Link>
 
