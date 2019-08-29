@@ -1,12 +1,12 @@
-import React,  {useState} from 'react';
+import React,  {useState, useEffect} from 'react';
 import Axios from 'axios';
 import {Link} from 'react-router-dom'
 import MyProfile from './MyProfile'
 
 const CreateProfile = (props) => {
     console.log('props in createprofile', props)
-    const [profile, setProfile] = useState({firstName:'', lastName:'', email:'',profession:''})
-
+    const [profile, setProfile] = useState(props.initialValue || {firstName:'', lastName:'', email:'',profession:''})
+    
    
 
     const handleChange = e => {
@@ -33,6 +33,7 @@ const CreateProfile = (props) => {
         // console.log('check props in handleSubmit', props)
         props.props.history.push("/myprofile")
     }
+
 
     return (
         <div>
@@ -71,7 +72,7 @@ const CreateProfile = (props) => {
                 
                 <button type="submit" >Create Profile</button>
             </form>
-
+            {/* <button >Edit Profile</button> */}
         </div>
     )
 }

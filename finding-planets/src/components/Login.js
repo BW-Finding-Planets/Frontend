@@ -43,6 +43,10 @@ const LoginForm = (props) => {
   console.log('props in Login', props)
   const classes = useStyles();
 
+  useEffect(()=> {
+    props.getUsers()
+  }, [])
+
   return (
     <>
       <div className="container2">
@@ -98,7 +102,7 @@ const FormikLoginForm = withFormik({
       .then(res => {
         console.log('token', res.data);
         localStorage.setItem('token', res.data.token);
-        props.history.history.push('/createprofile');
+        props.history.history.push('/myprofile');
         props.setUserId(res.data.id);
         
       })

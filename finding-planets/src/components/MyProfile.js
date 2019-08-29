@@ -17,6 +17,7 @@ const MyProfile = (props) => {
             .then(res => {
                 console.log('res in myprofile',res)
                 setDisplayProfile(res.data)
+                
             })
             .catch(err => console.log(err.response))
     }, [])
@@ -27,6 +28,13 @@ const MyProfile = (props) => {
             <p>Name: {displayProfile.firstName} {displayProfile.lastName}</p>
             <p>Email: {displayProfile.email}</p>
             <p>Profession: {displayProfile.profession}</p>
+            <button onClick={
+                // ()=> props.history.push('/AppPage')
+                () => {if (displayProfile.firstName) {return props.history.push('/AppPage')} 
+                else {return props.history.push('/createprofile')}
+                }
+                }
+                >Next</button>
         </div>
     )
 }

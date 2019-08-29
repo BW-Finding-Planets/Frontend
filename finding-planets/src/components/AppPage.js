@@ -7,7 +7,7 @@ import data from "../data";
 import Cards from "./Card";
 import SomeForm from "./Form"
 
-function AppPage() {
+function AppPage(props) {
 
   const [cards, setCards] = useState(data);
 
@@ -34,6 +34,7 @@ function AppPage() {
        </div> 
 
       </header>
+      <button onClick={()=> {props.history.push('/editprofile')}}>Edit Profile</button>
     </div>
   );
 }

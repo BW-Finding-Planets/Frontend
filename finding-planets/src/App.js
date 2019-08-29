@@ -9,12 +9,26 @@ import CreateProfile from './components/CreateProfile'
 import EditProfile from './components/EditProfile'
 import MyProfile from './components/MyProfile'
 import PrivateRoute from './components/PrivateRoute'
+import Axios from 'axios'
 
 function App() {
   const [userId, setUserId] = useState()
+  const [userList,setUserList] = useState([])
 
   console.log('id', userId)
-  
+
+  const getUsers = () => {
+        Axios
+          .get(`https://finding-planets.herokuapp.com/users`, {
+              headers: {
+                  Authorization: localStorage.getItem('token')}})
+          .then(res => {
+              console.log('list of users',res)
+              setUserList(res.data)
+              
+          })
+          .catch(err => console.log(err.response))
+ } 
 
   return (
     <Router>
@@ -24,7 +38,7 @@ function App() {
     <Route 
       exact path="/" 
       render = {props => {
-        return <FormikLoginForm  history={props} setUserId={setUserId} />
+        return <FormikLoginForm  history={props} setUserId={setUserId} getUsers={getUsers} />
         }}
     />
     
@@ -39,16 +53,21 @@ function App() {
     <Route 
       path ="/createprofile" 
       render = {props=> {
-        return <CreateProfile props={props} userId={userId}/>
+        console.log('props in render', props)
+        const initialValue=userList.find(user => user.id == userId)
+        return <CreateProfile props={props} userId={userId} initialValue={initialValue}/>
       }}   
     />
 
-    {/* <Route 
-      path ="/myprofile/edit" 
+    <Route 
+      path ="/editprofile" 
       render = {props=> {
-        return <EditProfile userId={userId}/>
+        console.log('props in render', props)
+        const initialValue=userList.find(user => user.id == userId)
+        return <EditProfile props={props} userId={userId} initialValue={initialValue}/>
       }}   
-    /> */}
+    />
+
     
     <PrivateRoute path="/myprofile" component={MyProfile} userId={userId}/>
 
