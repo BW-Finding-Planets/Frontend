@@ -4,9 +4,28 @@ import { Button, Form } from 'semantic-ui-react'
 
 
 const SomeForm = props => {
+  // const [mainID, setMainID] = useState();
+  // console.log("My ID inside the form", props.mainID)
+  // console.log("My array inside the form", props.starobj)
+  // const changeHandler = event => {
+  //   //computed properties
+  //   console.log(event.target.value);
+  //   setMainID({ ...mainID, [event.target.name]: event.target.value });
+  // };
+  // const submitForm = event => {
+  //   event.preventDefault();
+  //   setMainID(event.target.value );
+  // };
+  
+  // const firstItem = (arr, cb) => {
+  //   return cb(arr[0]);
+  // };
 
-  console.log("ololololo", props.mainID)
+  // firstItem(props.starobj, function(first) {
+  //   console.log(first)
+  // });
 
+  
   const options = [
     { key: 'Star1', text: 'Star 139250626', value: 1 },
     { key: 'Star2', text: 'Star 139281803', value: 2 },
@@ -21,12 +40,13 @@ const SomeForm = props => {
   ]
 
   return (
-    <Form>  
+    <Form >  
         <Form.Select
             fluid
             label='Choose your star'
             options={options}
             placeholder='Star name here'
+            // onChange={changeHandler}
           />
       <Button type='submit'>Submit</Button>
       </Form>

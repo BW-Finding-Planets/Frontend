@@ -12,6 +12,8 @@ function AppPage() {
   const [starobj, setStarobj] = useState([]);
   const [mainID, setMainID] = useState(1);
 
+
+
   // Functions for next/previous buttons
   const nextID = (mainID) => {
     if (mainID < 10) 
@@ -90,12 +92,8 @@ function AppPage() {
         </Button.Group>
         </div>
 
-       {/* <div>
-         <SomeForm mainID={mainID}/>
-       </div> */}
-
        <div>
-         <SomeForm mainID={mainID} />
+         <SomeForm mainID={mainID} starobj={starobj} />
        </div>
 
        <div className="Cards-listing">
