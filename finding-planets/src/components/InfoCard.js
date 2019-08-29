@@ -31,12 +31,22 @@ const StarCard = props => {
           <Item.Image size='tiny' src={require(`../images/star${props.id}.jpg`)} />
            
           <Item.Content>
-            <Item.Header>{props.tceid}</Item.Header>
+            <Item.Header>Star {props.ticid}</Item.Header>
             <Item.Meta>
-              <span className='price'>$1200</span>
-              <span className='stay'>1 Month</span>
+              <span className='price'>Radius</span>
+              <span className='stay'>{props.ratioSemiMajorAxisToStarRadius}</span>
             </Item.Meta>
-            <Item.Description>{paragraph}</Item.Description>
+            <p>Insolation Flux: {props.InsolationFlux}</p>
+            {/* <p>magnitude: {props.}</p>    */}
+            {/* <p>luminosity: {props.}</p>      */}
+            {/* <p>star_mass: {props.}</p>      */}
+            <p>star_radius: {props.ratioSemiMajorAxisToStarRadius}</p>     
+            {/* <p>constellation: {props.}</p>      */}
+            {/* <p>rightascension: {props.}</p>      */}
+            {/* <p>declination: {props.}</p>    */}
+            <p>starTeffKelvin: {props.starTeffKelvin}</p>   
+            {/* <p>model_prediction: {props.}</p>    */}
+            {/* <p>distance: {props.}</p> */}
           </Item.Content>
         </Item>
     

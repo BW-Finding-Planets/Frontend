@@ -98,8 +98,11 @@ function AppPage() {
 
           <Infocard 
            key={data.id}
-           tceid={data.tceid}
+           ticid={data.ticid}
            id={data.id}
+           InsolationFlux={data.InsolationFlux}
+           ratioSemiMajorAxisToStarRadius={data.ratioSemiMajorAxisToStarRadius}
+           starTeffKelvin={data.starTeffKelvin}
           />
         </div>
       );
