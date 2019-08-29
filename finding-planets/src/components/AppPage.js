@@ -11,8 +11,8 @@ import Infocard from "./InfoCard";
 function AppPage() {
 
   const [starobj, setStarobj] = useState([]);
+  const [starStat, setStarStat] = useState([]);
   const [mainID, setMainID] = useState(1);
-
 
 
   // Functions for next/previous buttons
@@ -35,7 +35,7 @@ function AppPage() {
   };
   // End of functions foe next/previous buttons
 
-  // Axios request part
+  // Axios main request part
     useEffect(() => {
       const token = localStorage.getItem('token');
 
@@ -50,7 +50,7 @@ function AppPage() {
         console.log(token)
       })
       .catch(function (error) {
-          console.log("Oh-oh, something wrong", error);
+          console.log("Oh-oh, something wrong with main array", error);
       });
   }, []);
   console.log("ID counter value: ", mainID)
@@ -63,10 +63,63 @@ function AppPage() {
     }
     return false;
   });
-  console.log("Current element", oneElement);
+  // console.log("Current element", oneElement);
   // End Preparing
 
   
+    // Axios statistic request part
+    useEffect(() => {
+      
+    axios
+      .get(`https://finding-planets.herokuapp.com/candidate/`, {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then(response => {
+        const starStatistic = response.data;
+        console.log("Statistic data is here", starStatistic);
+        setStarStat(starStatistic);
+      })
+      .catch(function (error) {
+          console.log("Oh-oh, something wrong with statistic", error);
+      });
+  }, []);
+  // console.log("ID counter value: ", mainID)
+    // End of Axios request part
+     
+    // Preparing array for rendering of statistic
+  const oneStatElement = starStat.filter(function(oneEl) {
+    if (oneEl.id === mainID) {
+      return true;
+    }
+    return false;
+  });
+  // console.log("Current stat element", oneStatElement);
+
+    //Getting grade from Object of Array
+  let totalRate = oneStatElement.reduce((previousValue, vote) => {
+    return previousValue + (vote.veryUnLikely * 1) + (vote.neutralLikely * 2) + (vote.someWhatLikely * 3) + (vote.someWhatUnLikely * 4) + (vote.veryLikely * 5) ;
+  }, 0);
+  
+  let totalVotes = oneStatElement.reduce((previousValue, vote) => {
+    return previousValue + (vote.veryUnLikely) + (vote.neutralLikely) + (vote.someWhatLikely) + (vote.someWhatUnLikely) + (vote.veryLikely) ;
+  }, 0);
+
+  let finalRate;
+
+  let finalRates = (totalRate, totalVotes) => {
+    if (totalVotes === 0) 
+    {
+      return finalRate = 0;
+    } else {
+      return finalRate = (totalRate / totalVotes);
+    }
+  };
+
+  finalRate = finalRates(totalRate, totalVotes);
+  // console.log("Statistic Value: ", finalRate);
+
+  // End Preparing
+
 
 
   return (
@@ -97,11 +150,11 @@ function AppPage() {
 
       <div className="Rating">
         <Statistic>
-          <Statistic.Value>4,8</Statistic.Value>
-          <Statistic.Label>Rate of the star</Statistic.Label>
+          <Statistic.Value>{finalRate}</Statistic.Value>
+          <Statistic.Label>Rating of light curve</Statistic.Label>
         </Statistic>
         <Statistic>
-          <Statistic.Value>58</Statistic.Value>
+          <Statistic.Value>{totalVotes}</Statistic.Value>
           <Statistic.Label>Votes</Statistic.Label>
         </Statistic>
       </div>
@@ -114,11 +167,19 @@ function AppPage() {
 
           <Infocard 
            key={data.id}
-           ticid={data.ticid}
+           ticid_x={data.ticid_x}
            id={data.id}
            InsolationFlux={data.InsolationFlux}
-           ratioSemiMajorAxisToStarRadius={data.ratioSemiMajorAxisToStarRadius}
+           star_radius={data.star_radius}
            starTeffKelvin={data.starTeffKelvin}
+           magnitude={data.magnitude}
+           luminosity={data.luminosity}
+           star_mass={data.star_mass}
+           constellation={data.constellation}
+           rightascension={data.rightascension}
+           declination={data.declination}
+           predictions={data.predictions}
+           distance={data.distance}
           />
         </div>
       );
