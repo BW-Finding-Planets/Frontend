@@ -15,7 +15,6 @@ function AppPage(props) {
   const [mainID, setMainID] = useState(1);
 
 
-
   // Functions for next/previous buttons
   const nextID = (mainID) => {
     if (mainID < 10)
@@ -36,7 +35,7 @@ function AppPage(props) {
   };
   // End of functions foe next/previous buttons
 
-  // Axios request part
+  // Axios main request part
     useEffect(() => {
       const token = localStorage.getItem('token');
 
@@ -67,6 +66,8 @@ function AppPage(props) {
   // console.log("Current element", oneElement);
   // End Preparing
 
+<<<<<<< HEAD
+=======
   
     // Axios statistic request part
     useEffect(() => {
@@ -120,6 +121,7 @@ function AppPage(props) {
   // console.log("Statistic Value: ", finalRate);
 
   // End Preparing
+>>>>>>> origin/master
 
 
 
@@ -133,17 +135,17 @@ function AppPage(props) {
 
         <div className="Buttons">
 
-          <Button 
-            labelPosition='left' 
-            icon='left chevron' 
-            content='Previous' 
+          <Button
+            labelPosition='left'
+            icon='left chevron'
+            content='Previous'
             onClick={() => previousID(mainID)}
           />
           <RatingStar className="Rating-Stars" />
           <Button
-            labelPosition='right' 
-            icon='right chevron' 
-            content='Forward' 
+            labelPosition='right'
+            icon='right chevron'
+            content='Forward'
             onClick={() => nextID(mainID)}
             />
 
@@ -166,7 +168,7 @@ function AppPage(props) {
       return (
         <div >
 
-          <Infocard 
+          <Infocard
            key={data.id}
            ticid_x={data.ticid_x}
            id={data.id}
@@ -190,7 +192,7 @@ function AppPage(props) {
 
 
       </header>
-    </div>
+        </div>
   );
 }
 

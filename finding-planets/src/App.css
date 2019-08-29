@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-
-  background-image: url("https://i.imgur.com/iiqFgYX.jpg") cover;
-
-
+  background-image: url("./images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110%;
 }
 
 .Curve-Graph {
