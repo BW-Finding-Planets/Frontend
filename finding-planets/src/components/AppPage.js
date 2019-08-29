@@ -4,14 +4,11 @@ import 'semantic-ui-css/semantic.min.css'
 import { Header, Button } from 'semantic-ui-react'
 import axios from "axios";
 
-import data from "../data";
-import Cards from "./Card";
 import SomeForm from "./Form";
 import Infocard from "./InfoCard";
 
 function AppPage() {
 
-  const [cards, setCards] = useState(data);
   const [starobj, setStarobj] = useState([]);
   const [mainID, setMainID] = useState(1);
 
@@ -93,10 +90,7 @@ function AppPage() {
         </Button.Group>
         </div>
 
-        <div><SomeForm /></div>
-        {/* <div className="Cards-listing">
-          <Cards cardsList={cards} />
-       </div>  */}
+       <div><SomeForm /></div>
        <div className="Cards-listing">
         {oneElement.map(data => {
       return (
