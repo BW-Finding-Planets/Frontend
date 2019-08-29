@@ -4,17 +4,7 @@ import { Image, Item, Dimmer, Loader, Segment } from 'semantic-ui-react'
 
 
 const StarCard = props => {
-    // const items = [
-    //     {
-    //       header: `${props.name}`,
-    //       meta: `Gender: ${props.gender}`,
-    //       description: `Hair_color: ${props.hair_color}, Height: ${props.height}`,
-    //     }
-
-    //   ]
-      
-      const paragraph = <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-    
+     
     if (!props.id) return <div>    
         <Segment>
             <Dimmer active inverted>
