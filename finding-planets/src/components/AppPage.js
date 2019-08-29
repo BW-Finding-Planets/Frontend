@@ -92,12 +92,7 @@ function AppPage() {
         </Button.Group>
         </div>
 
-       {/* <div>
-         <SomeForm mainID={mainID} starobj={starobj} />
-       </div> */}
-
       <div className="Rating">
-
         <Statistic>
           <Statistic.Value>4,8</Statistic.Value>
           <Statistic.Label>Rate of the star</Statistic.Label>
@@ -106,7 +101,6 @@ function AppPage() {
           <Statistic.Value>58</Statistic.Value>
           <Statistic.Label>Votes</Statistic.Label>
         </Statistic>
-
       </div>
 
 
