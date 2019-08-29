@@ -172,6 +172,14 @@ function AppPage() {
            InsolationFlux={data.InsolationFlux}
            ratioSemiMajorAxisToStarRadius={data.ratioSemiMajorAxisToStarRadius}
            starTeffKelvin={data.starTeffKelvin}
+           magnitude={data.magnitude}
+           luminosity={data.luminosity}
+           star_mass={data.star_mass}
+           constellation={data.constellation}
+           rightascension={data.rightascension}
+           declination={data.declination}
+           predictions={data.predictions}
+           distance={data.distance}
           />
         </div>
       );
