@@ -18,7 +18,7 @@ const StarCard = props => {
     return (
         <Item.Group >
         <Item>
-          <Item.Image size='tiny' src={require(`../images/star${props.id}.jpg`)} />
+         
            
           <Item.Content>
             <Item.Header>Star {props.ticid}</Item.Header>

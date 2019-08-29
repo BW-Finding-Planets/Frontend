@@ -98,7 +98,7 @@ function AppPage() {
       <div className="Rating">
         <Statistic>
           <Statistic.Value>4,8</Statistic.Value>
-          <Statistic.Label>Rate of the star</Statistic.Label>
+          <Statistic.Label>Rating of light curve</Statistic.Label>
         </Statistic>
         <Statistic>
           <Statistic.Value>58</Statistic.Value>
