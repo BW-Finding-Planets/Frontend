@@ -9,8 +9,9 @@ import AppPage from './components/AppPage'
 
 function App() {
   return (
+    
     <Router>
-      <div className="App">
+    <div className="App">
     <MenuAppBar />
     <Route exact path="/" component={FormikLoginForm} />
     
