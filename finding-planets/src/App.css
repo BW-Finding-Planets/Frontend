@@ -63,4 +63,16 @@
 }
 .Buttons {
   margin-bottom: 3% !important;
+  display: flex;
+  background-color: lightgray;
+  width: 70%;
+  border-radius: 5px;
+  justify-content: space-between;
+
+}
+.ui.rating {
+  margin-top: 12% !important;
+}
+.ui.icon.right.labeled.button {
+  margin: 0 !important;
 }

@@ -1,10 +1,11 @@
 import React, { useState, useEffect} from 'react';
 
 import 'semantic-ui-css/semantic.min.css'
-import { Header, Button, Statistic } from 'semantic-ui-react'
+import { Header, Button, Statistic, Rating } from 'semantic-ui-react'
 import axios from "axios";
 
-// import SomeForm from "./Form";
+
+import RatingStar from "./RatingStar";
 import Infocard from "./InfoCard";
 
 function AppPage() {
@@ -65,6 +66,9 @@ function AppPage() {
   console.log("Current element", oneElement);
   // End Preparing
 
+  
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -74,22 +78,21 @@ function AppPage() {
         <img src={require(`../pics/${mainID}.png`)} className="Curve-Graph" alt="Light Curve Graph" />
         
         <div className="Buttons">
-        <Button.Group>
+
           <Button 
             labelPosition='left' 
             icon='left chevron' 
             content='Previous' 
             onClick={() => previousID(mainID)}
           />
-          <Button icon='close' content='Not a planet' />
-          <Button icon='like' content='Planet' />
+          <RatingStar className="Rating-Stars" />
           <Button
             labelPosition='right' 
             icon='right chevron' 
             content='Forward' 
             onClick={() => nextID(mainID)}
             />
-        </Button.Group>
+
         </div>
 
       <div className="Rating">
