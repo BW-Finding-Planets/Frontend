@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserData } from '../state/actions/index';
+
 
 import { Link } from 'react-router-dom';
 
@@ -39,8 +40,18 @@ const useStyles = makeStyles({
   }
 });
 
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
 const CreateProfile = props => {
+  console.log('render ++++===================');
   console.log('props in createprofile', props.firstName);
+
   const [profile, setProfile] = useState({
     firstName: props.firstName || '',
     lastName: props.lastName || '',
@@ -76,14 +87,31 @@ const CreateProfile = props => {
       .catch(err => console.log(err.response));
   };
 
-  useEffect(() => {
-      props.getUserData(props.id);
+  const prevUserName = usePrevious(props.username);
 
+  useEffect(() => {
+    props.getUserData(props.id).then(() => {
+      console.log('User Data Props', props);
+    });
   }, []);
+
+  useEffect(() => {
+    if (prevUserName === '' && prevUserName !== props.username) {
+      setProfile({
+        firstName: props.firstName || '',
+        lastName: props.lastName || '',
+        email: props.email || '',
+        profession: props.profession || ''
+      });
+    }
+  }, [props.username]);
 
   return (
     <div className="container2">
       <Card className={classes.card}>
+
+        <label>First Name</label>
+
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -92,6 +120,7 @@ const CreateProfile = props => {
             value={profile.firstName}
             onChange={handleChange}
           />
+          <label>Last Name</label>
 
           <input
             type="text"
@@ -100,6 +129,7 @@ const CreateProfile = props => {
             value={profile.lastName}
             onChange={handleChange}
           />
+          <label>Email</label>
 
           <input
             type="text"
@@ -108,6 +138,7 @@ const CreateProfile = props => {
             value={profile.email}
             onChange={handleChange}
           />
+          <label>Profession</label>
 
           <input
             type="text"

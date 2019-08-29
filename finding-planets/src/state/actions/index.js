@@ -12,13 +12,13 @@ export const storeUserId = id => {
 
 
 
-export const AUTHENTICATION = 'AUTHENTICATION';
-
-export const authenToken = token => {
-  console.log('action fired authen', token);
-  return { type: 'AUTHENTICATION', payload: token };
-};
-
+// export const AUTHENTICATION = 'AUTHENTICATION';
+//
+// export const authenToken = token => {
+//   console.log('action fired authen', token);
+//   return { type: 'AUTHENTICATION', payload: token };
+// };
+//
 
 
 
@@ -35,7 +35,7 @@ export const getUserData = id => {
   return dispatch => {
     console.log("ACTION FIRED")
     dispatch({ type: FETCH_USER_DATA_START });
-    axios
+    return axios
       .get(`https://finding-planets.herokuapp.com/users/${id}`, {
         headers: {
           Authorization: localStorage.getItem('token')
