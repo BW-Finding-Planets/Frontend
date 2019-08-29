@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux'
+
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,21 +12,23 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
+// import {stringify} from 'jest-matcher-utils';
 import Menu from '@material-ui/core/Menu';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1,
-  },
+    flexGrow: 1
+  }
 }));
 
-export default function MenuAppBar() {
+const MenuAppBar = (props) => {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -36,12 +40,12 @@ export default function MenuAppBar() {
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
-
   }
 
   function handleClose() {
     setAnchorEl(null);
   }
+  console.log("MenuAppBar Bool ", props)
 
   return (
     <div className={classes.root}>
@@ -70,7 +74,7 @@ export default function MenuAppBar() {
           <Typography variant="h6" className={classes.title}>
             Finding Planets
           </Typography>
-          {auth === true? (
+          { (props.loggedIn === true) ? (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -97,7 +101,9 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <Link to="/myprofile">
+                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                </Link>
               </Menu>
             </div>
           ) : (
@@ -107,4 +113,14 @@ export default function MenuAppBar() {
       </AppBar>
     </div>
   );
+};
+const mapStateToProps = state => {
+  return{
+    loggedIn: state.loggedIn,
+  }
 }
+
+export default connect(
+  mapStateToProps,
+  {}
+)(MenuAppBar);

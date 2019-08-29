@@ -12,13 +12,13 @@ export const storeUserId = id => {
 
 
 
-// export const AUTHENTICATION = 'AUTHENTICATION';
-//
-// export const authenToken = token => {
-//   console.log('action fired authen', token);
-//   return { type: 'AUTHENTICATION', payload: token };
-// };
-//
+export const IS_LOGGEDIN = 'IS_LOGGEDIN';
+
+export const isLoggedIn = loggedIn => {
+  console.log('action fired authen', loggedIn);
+  return { type: 'IS_LOGGEDIN', payload: loggedIn };
+};
+
 
 
 

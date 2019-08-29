@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Field, withFormik, Formik } from 'formik';
 import * as Yup from 'yup';
 import {connect} from 'react-redux';
-import { storeUserId } from '../state/actions/index';
+import { storeUserId, isLoggedIn } from '../state/actions/index';
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -45,7 +45,7 @@ const LoginForm = (props, { status }) => {
   console.log('props in Login', props);
   const classes = useStyles();
 
- 
+
 
   return (
     <>
@@ -107,6 +107,7 @@ const FormikLoginForm = withFormik({
         setStatus(res.data.id);
         props.storeUserId(res.data.id)
         props.history.history.push('/createprofile');
+        props.isLoggedIn(true)
 
       })
 
@@ -117,5 +118,5 @@ const FormikLoginForm = withFormik({
 
 export default connect(
   null,
-  { storeUserId }
+  { storeUserId, isLoggedIn}
 )(FormikLoginForm);

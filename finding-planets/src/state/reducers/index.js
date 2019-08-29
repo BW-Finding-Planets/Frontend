@@ -2,6 +2,7 @@ import {
   FETCH_USER_DATA_START,
   FETCH_USER_DATA_SUCCESS,
   FETCH_USER_DATA_FAILURE,
+  IS_LOGGEDIN,
   SET_ID
 } from '../actions/index';
 
@@ -11,7 +12,8 @@ const initialState = {
   lastName: '',
   email: '',
   profession: '',
-  username: ''
+  username: '',
+  loggedIn: false
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -30,6 +32,9 @@ export const userReducer = (state = initialState, action) => {
       };
     case SET_ID:
       return { ...state, id: action.payload };
+    case IS_LOGGEDIN:
+      return { ...state, loggedIn: action.payload };
+
     default:
       return { ...state };
   }
