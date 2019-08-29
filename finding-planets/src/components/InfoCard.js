@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Image, Item, Container } from 'semantic-ui-react'
+import { Image, Item, Dimmer, Loader, Segment } from 'semantic-ui-react'
 
 
 const StarCard = props => {
@@ -15,8 +15,15 @@ const StarCard = props => {
       
       const paragraph = <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
     
-    // if (!props.name) return <h3>Loading...</h3>;
-    // else
+    if (!props.id) return <div>    
+        <Segment>
+            <Dimmer active inverted>
+                <Loader inverted>Loading</Loader>
+            </Dimmer>
+            <Image src='/images/wireframe/short-paragraph.png' />
+        </Segment>
+    </div>;
+    else
     // const key = {props.key}
     return (
         <Item.Group >
