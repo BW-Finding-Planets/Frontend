@@ -28,7 +28,7 @@ export const FETCH_USER_DATA_FAILURE = 'FETCH_USER_DATA_FAILURE';
 
 export const getUserData = id => {
   return dispatch => {
-    console.log('ACTION FIRED');
+    console.log('ACTION FIRED', id);
     dispatch({ type: FETCH_USER_DATA_START });
     return axios
       .get(`https://finding-planets.herokuapp.com/users/${id}`, {
@@ -37,7 +37,7 @@ export const getUserData = id => {
         }
       })
       .then(res => {
-        console.log('Response', res.data);
+        console.log('Response in User Data', res.data);
         dispatch({ type: FETCH_USER_DATA_SUCCESS, payload: res.data });
       })
       .catch(err => {

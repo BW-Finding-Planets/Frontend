@@ -32,13 +32,11 @@ const useStyles = makeStyles(theme => ({
 
 const MenuAppBar = props => {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  function handleChange(event) {
-    setAuth(event.target.checked);
-  }
+
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
@@ -65,14 +63,14 @@ const MenuAppBar = props => {
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          {/* <IconButton */}
+          {/*   edge="start" */}
+          {/*   className={classes.menuButton} */}
+          {/*   color="inherit" */}
+          {/*   aria-label="menu" */}
+          {/* > */}
+          {/*   <MenuIcon /> */}
+          {/* </IconButton> */}
           <Typography variant="h6" className={classes.title}>
             Finding Planets
           </Typography>
@@ -100,7 +98,7 @@ const MenuAppBar = props => {
                   horizontal: 'right'
                 }}
                 open={open}
-                onClose={handleClose}
+            onClose={handleClose}
               >
                 <Link to="/myprofile">
                   <MenuItem onClick={handleClose}>My Profile</MenuItem>

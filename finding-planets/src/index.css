@@ -6,9 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: url("./images/tess1.jpg") !important; 
+  background: url("./images/tess1.jpg") !important;
   height: 100%;
-  
+
 }
 
 code {

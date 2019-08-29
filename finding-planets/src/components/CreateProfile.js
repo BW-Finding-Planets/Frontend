@@ -3,42 +3,43 @@ import Axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserData } from '../state/actions/index';
 
-
-import { Link } from 'react-router-dom';
-
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import { makeStyles } from '@material-ui/core/styles';
+import './CreateProfile.css';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 const useStyles = makeStyles({
-  card: {
-    maxWidth: 500,
-    display: 'flex',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    marginTop: '300px',
-    width: '400px'
-  },
-  media: {
-    height: 200
-  },
-  btn: {
+    card: {
+      maxWidth: 500,
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+      marginTop: '220px',
+      width: '400px',
+    },
+    media: {
+      height: 200,
+    },
+    btn:
+    {
     marginTop: '30px',
-    background: 'orange'
-  },
-  error: {
-    color: 'red',
-    fontSize: '.7rem'
-  }
-});
+    background: 'orange',
+    },
+    error:{
+      color: 'red',
+      fontSize: '.8rem'
+
+    }
+})
+
+
+
+
+
+
 
 function usePrevious(value) {
   const ref = useRef();
@@ -51,11 +52,12 @@ function usePrevious(value) {
 const CreateProfile = props => {
 
 
+
   const [profile, setProfile] = useState({
-    firstName: props.firstName || '',
-    lastName: props.lastName || '',
-    email: props.email || '',
-    profession: props.profession || ''
+    firstName:'',
+    lastName:  '',
+    email: '',
+    profession: ''
   });
 
   const classes = useStyles();
@@ -67,7 +69,7 @@ const CreateProfile = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('profile', props.id);
+
 
     Axios.put(
       `https://finding-planets.herokuapp.com/users/${props.id}`,
@@ -79,7 +81,7 @@ const CreateProfile = props => {
       }
     )
       .then(res => {
-        console.log(res);
+
         props.props.history.push('/AppPage');
       })
       .catch(err => console.log(err.response));
@@ -145,7 +147,7 @@ const CreateProfile = props => {
             onChange={handleChange}
           />
 
-          <Button type="submit">{props.button}</Button>
+          <Button className={classes.btn} type="submit">{props.button}</Button>
         </form>
       </Card>
     </div>

@@ -15,7 +15,7 @@ const initialState = {
   profession: '',
   username: '',
   loggedIn: false,
-  newUser: false,
+  newUser: false
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -35,10 +35,22 @@ export const userReducer = (state = initialState, action) => {
     case SET_ID:
       return { ...state, id: action.payload };
     case IS_LOGGEDIN:
-      return { ...state, loggedIn: action.payload };
+      if (action.payload === false) {
+        return { ...state, loggedIn: action.payload };
+      } else {
+       return {
+          ...state,
+          // id:'',
+          // firstName: '',
+          // lastName: '',
+          // email: '',
+          // profession: '',
+          // username: '',
+          loggedIn: action.payload
+        };
+      }
     case IS_NEW_USER:
-      return{ ...state, newUser: action.payload };
-
+      return { ...state, newUser: action.payload };
 
     default:
       return { ...state };

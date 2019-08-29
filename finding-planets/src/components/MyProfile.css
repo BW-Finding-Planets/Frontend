@@ -1,0 +1,48 @@
+p{
+    color: black !important;
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+
+img {
+    border-radius: 50%;
+    
+}
+
+.myProfile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-bottom: 300px; */
+    margin: 30px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+  }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -100px;
+}
+
+.user-info{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+}
+
+h1{
+    padding-top: 10px;
+    margin-bottom: -10px;
+    color: orange
+}

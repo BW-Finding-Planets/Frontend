@@ -17,7 +17,7 @@ function AppPage(props) {
 
   // Functions for next/previous buttons
   const nextID = (mainID) => {
-    if (mainID < 10) 
+    if (mainID < 10)
     {
     setMainID(mainID => mainID + 1);
     } else {
@@ -26,7 +26,7 @@ function AppPage(props) {
   };
 
   const previousID = (mainID) => {
-    if (mainID <= 1) 
+    if (mainID <= 1)
     {
     setMainID(mainID = 10);
     } else {
@@ -66,7 +66,7 @@ function AppPage(props) {
   console.log("Current element", oneElement);
   // End Preparing
 
-  
+
 
 
   return (
@@ -76,20 +76,20 @@ function AppPage(props) {
           The Transit Light Curve
         </Header>
         <img src={require(`../pics/${mainID}.png`)} className="Curve-Graph" alt="Light Curve Graph" />
-        
+
         <div className="Buttons">
 
-          <Button 
-            labelPosition='left' 
-            icon='left chevron' 
-            content='Previous' 
+          <Button
+            labelPosition='left'
+            icon='left chevron'
+            content='Previous'
             onClick={() => previousID(mainID)}
           />
           <RatingStar className="Rating-Stars" />
           <Button
-            labelPosition='right' 
-            icon='right chevron' 
-            content='Forward' 
+            labelPosition='right'
+            icon='right chevron'
+            content='Forward'
             onClick={() => nextID(mainID)}
             />
 
@@ -112,7 +112,7 @@ function AppPage(props) {
       return (
         <div >
 
-          <Infocard 
+          <Infocard
            key={data.id}
            ticid={data.ticid}
            id={data.id}
@@ -128,8 +128,7 @@ function AppPage(props) {
 
 
       </header>
-      <button onClick={()=> {props.history.push('/editprofile')}}>Edit Profile</button>
-    </div>
+        </div>
   );
 }
 

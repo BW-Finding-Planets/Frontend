@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   },
   error: {
     color: 'red',
-    fontSize: '.7rem'
+    fontSize: '.9rem'
   }
 });
 
@@ -44,11 +44,7 @@ const SignUp = props => {
   console.log(props);
   return (
     <>
-      <Link className="check-user" to="/login">
-        <p>Already a user?</p>
-      </Link>
-
-      <div className="container2">
+          <div className="container2">
         <Card className={classes.card}>
           <h2>Register to discover planets</h2>
 
@@ -56,19 +52,19 @@ const SignUp = props => {
             <label>Username</label>
             <Field type="text" placeholder="username" name="username" />
             {props.touched.username && props.errors.username && (
-              <p className={classes.error}>{props.errors.username}</p>
+              <p1 className={classes.error}>{props.errors.username}</p1>
             )}
 
             <label>Password</label>
             <Field type="text" placeholder="password" name="password" />
             {props.touched.password && props.errors.password && (
-              <p className={classes.error}>{props.errors.password}</p>
+              <p1 className={classes.error}>{props.errors.password}</p1>
             )}
 
             <label>Confirm Password</label>
             <Field type="text" placeholder="password" name="passwordConfirm" />
             {props.touched.passwordConfirm && props.errors.passwordConfirm && (
-              <p className={classes.error}>{props.errors.passwordConfirm}</p>
+              <p1 className={classes.error}>{props.errors.passwordConfirm}</p1>
             )}
 
             <Button className={classes.btn} type="submit">

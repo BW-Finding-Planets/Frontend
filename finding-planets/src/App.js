@@ -20,8 +20,9 @@ function App() {
 
 
   return (
-    
+
     <Router>
+
     <div className="App">
     <MenuAppBar />
 
@@ -54,8 +55,8 @@ function App() {
     />
 
 
-    <PrivateRoute path="/myprofile" 
-     component={MyProfile}  
+    <PrivateRoute path="/myprofile"
+     component={MyProfile}
      userId={userId}/>
 
     <Route path ="/AppPage" component = {AppPage} />
