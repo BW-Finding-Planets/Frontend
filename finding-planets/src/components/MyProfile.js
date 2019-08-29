@@ -6,12 +6,12 @@ import { getUserData } from '../state/actions/index';
 
 const MyProfile = props => {
   console.log('props', props);
-  const [displayProfile, setDisplayProfile] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    profession: ''
-  });
+  // const [displayProfile, setDisplayProfile] = useState({
+  //   firstName: '',
+  //   lastName: '',
+  //   email: '',
+  //   profession: ''
+  // });
 
   const id = props.userId;
 
@@ -33,18 +33,30 @@ const MyProfile = props => {
 
   return (
     <div>
-      <p>Username: {displayProfile.username}</p>
+      <p>Username: {props.username}</p>
       <p>
-        Name: {displayProfile.firstName} {displayProfile.lastName}
+        Name: {props.firstName} {props.lastName}
       </p>
-      <p>Email: {displayProfile.email}</p>
-      <p>Profession: {displayProfile.profession}</p>
+      <p>Email: {props.email}</p>
+      <p>Profession: {props.profession}</p>
     </div>
   );
 };
 
+const mapToProps = state => {
+    return {
+        firstName: state.firstName,
+        lastName: state.lastName,
+        email: state.email,
+        profession: state.profession,
+        username: state.username,
+
+
+    }
+}
+
 export default connect(
-  null,
+  mapToProps,
   { getUserData }
 )(MyProfile);
 

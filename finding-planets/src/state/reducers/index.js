@@ -9,7 +9,8 @@ const initialState = {
   firstName: '',
   lastName: '',
   email: '',
-  profession: ''
+  profession: '',
+  username: '',
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -23,7 +24,8 @@ export const userReducer = (state = initialState, action) => {
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
         email: action.payload.email,
-        profession: action.payload.profession
+        profession: action.payload.profession,
+        username: action.payload.username
       };
     default:
       return { ...state };
