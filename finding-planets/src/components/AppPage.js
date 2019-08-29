@@ -155,7 +155,7 @@ function AppPage() {
           <Statistic.Label>Rating of light curve</Statistic.Label>
         </Statistic>
         <Statistic>
-          <Statistic.Value>58</Statistic.Value>
+          <Statistic.Value>{totalVotes}</Statistic.Value>
           <Statistic.Label>Votes</Statistic.Label>
         </Statistic>
       </div>
