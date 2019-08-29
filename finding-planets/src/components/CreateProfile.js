@@ -49,8 +49,7 @@ function usePrevious(value) {
 }
 
 const CreateProfile = props => {
-  console.log('render ++++===================');
-  console.log('props in createprofile', props.firstName);
+
 
   const [profile, setProfile] = useState({
     firstName: props.firstName || '',
@@ -65,7 +64,6 @@ const CreateProfile = props => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
 
-  // const profileId = props.userId
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -82,7 +80,7 @@ const CreateProfile = props => {
     )
       .then(res => {
         console.log(res);
-        props.props.history.push('/myprofile');
+        props.props.history.push('/AppPage');
       })
       .catch(err => console.log(err.response));
   };
@@ -91,7 +89,6 @@ const CreateProfile = props => {
 
   useEffect(() => {
     props.getUserData(props.id).then(() => {
-      console.log('User Data Props', props);
     });
   }, []);
 

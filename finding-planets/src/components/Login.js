@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Field, withFormik, Formik } from 'formik';
 import * as Yup from 'yup';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { storeUserId, isLoggedIn } from '../state/actions/index';
-
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -45,8 +44,6 @@ const LoginForm = (props, { status }) => {
   console.log('props in Login', props);
   const classes = useStyles();
 
-
-
   return (
     <>
       <div className="container2">
@@ -80,7 +77,11 @@ const LoginForm = (props, { status }) => {
     </>
   );
 };
-
+const mapStateToProps = state => {
+  return {
+    newUser: state.newUser
+  };
+};
 const FormikLoginForm = withFormik({
   mapPropsToValues({ username, password, history }) {
     return {
@@ -105,18 +106,22 @@ const FormikLoginForm = withFormik({
 
         props.setUserId(res.data.id);
         setStatus(res.data.id);
-        props.storeUserId(res.data.id)
-        props.history.history.push('/createprofile');
-        props.isLoggedIn(true)
-
+        props.storeUserId(res.data.id);
+        props.isLoggedIn(true);
       })
-
+      .then(res => {
+        if (props.newUser == true) {
+          props.history.history.push('/createprofile');
+        } else {
+          props.history.history.push('./AppPage');
+        }
+      })
 
       .catch(err => console.log(err));
   }
 })(LoginForm);
 
 export default connect(
-  null,
-  { storeUserId, isLoggedIn}
+  mapStateToProps,
+  { storeUserId, isLoggedIn }
 )(FormikLoginForm);

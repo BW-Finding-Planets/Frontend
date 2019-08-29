@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -16,6 +16,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { Link } from 'react-router-dom';
 
+import { isLoggedIn, isNewUser } from '../state/actions/index';
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -28,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const MenuAppBar = (props) => {
+const MenuAppBar = props => {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -45,7 +47,7 @@ const MenuAppBar = (props) => {
   function handleClose() {
     setAnchorEl(null);
   }
-  console.log("MenuAppBar Bool ", props)
+  console.log('MenuAppBar Bool ', props);
 
   return (
     <div className={classes.root}>
@@ -74,7 +76,7 @@ const MenuAppBar = (props) => {
           <Typography variant="h6" className={classes.title}>
             Finding Planets
           </Typography>
-          { (props.loggedIn === true) ? (
+          {props.loggedIn === true ? (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -100,9 +102,23 @@ const MenuAppBar = (props) => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <Link to="/myprofile">
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                </Link>
+                <Link to="/AppPage">
+                  <MenuItem onClick={handleClose}>
+                    Start Finding Planets
+                  </MenuItem>
+                </Link>
+                <Link to="/">
+                  <MenuItem
+                    onClick={() => {
+                      props.isLoggedIn(false);
+                      props.isNewUser(false);
+                    }}
+                  >
+                    LogOut
+                  </MenuItem>
                 </Link>
               </Menu>
             </div>
@@ -115,12 +131,12 @@ const MenuAppBar = (props) => {
   );
 };
 const mapStateToProps = state => {
-  return{
-    loggedIn: state.loggedIn,
-  }
-}
+  return {
+    loggedIn: state.loggedIn
+  };
+};
 
 export default connect(
   mapStateToProps,
-  {}
+  { isLoggedIn, isNewUser }
 )(MenuAppBar);

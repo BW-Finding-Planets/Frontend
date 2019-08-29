@@ -1,15 +1,11 @@
 import axios from 'axios';
 
-
-
-
 export const SET_ID = 'SET_ID';
 
 export const storeUserId = id => {
   console.log('action fired', id);
   return { type: 'SET_ID', payload: id };
 };
-
 
 
 export const IS_LOGGEDIN = 'IS_LOGGEDIN';
@@ -19,12 +15,11 @@ export const isLoggedIn = loggedIn => {
   return { type: 'IS_LOGGEDIN', payload: loggedIn };
 };
 
-
-
-
-
-
-
+export const IS_NEW_USER = 'IS_NEW_USER';
+export const isNewUser = a => {
+  console.log('action fired newUser', a);
+  return { type: 'IS_NEW_USER', payload: a };
+};
 
 
 export const FETCH_USER_DATA_START = 'FETCH_USER_DATA_START';
@@ -33,7 +28,7 @@ export const FETCH_USER_DATA_FAILURE = 'FETCH_USER_DATA_FAILURE';
 
 export const getUserData = id => {
   return dispatch => {
-    console.log("ACTION FIRED")
+    console.log('ACTION FIRED');
     dispatch({ type: FETCH_USER_DATA_START });
     return axios
       .get(`https://finding-planets.herokuapp.com/users/${id}`, {

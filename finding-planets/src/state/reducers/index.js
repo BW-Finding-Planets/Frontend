@@ -2,6 +2,7 @@ import {
   FETCH_USER_DATA_START,
   FETCH_USER_DATA_SUCCESS,
   FETCH_USER_DATA_FAILURE,
+  IS_NEW_USER,
   IS_LOGGEDIN,
   SET_ID
 } from '../actions/index';
@@ -13,7 +14,8 @@ const initialState = {
   email: '',
   profession: '',
   username: '',
-  loggedIn: false
+  loggedIn: false,
+  newUser: false,
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -34,6 +36,9 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, id: action.payload };
     case IS_LOGGEDIN:
       return { ...state, loggedIn: action.payload };
+    case IS_NEW_USER:
+      return{ ...state, newUser: action.payload };
+
 
     default:
       return { ...state };
