@@ -2,19 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Field, withFormik, Formik } from 'formik';
 import * as Yup from 'yup';
-// import UserCard from './UserCard';
+import { connect } from 'react-redux';
+import { storeUserId, isLoggedIn } from '../state/actions/index';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-
 import './Login.css';
 
 const useStyles = makeStyles({
@@ -36,10 +29,10 @@ const useStyles = makeStyles({
   },
   error: {
     color: 'red',
-    fontSize: '.7rem'
+    fontSize: '.9rem'
   }
 });
-const LoginForm = ({ errors, touched, values, status }) => {
+const LoginForm = (props, { status }) => {
   const classes = useStyles();
 
   return (
@@ -50,13 +43,13 @@ const LoginForm = ({ errors, touched, values, status }) => {
           <Form className="formCon">
             <label>Username</label>
             <Field type="text" name="username" placeholder="username..." />
-            {touched.username && errors.username && (
-              <p className={classes.error}>{errors.username}</p>
+            {props.touched.username && props.errors.username && (
+              <p1 className={classes.error}>{props.errors.username}</p1>
             )}
             <label>Password</label>
             <Field type="password" name="password" placeholder="password.." />
-            {touched.password && errors.password && (
-              <p className={classes.error}>{errors.password}</p>
+            {props.touched.password && props.errors.password && (
+              <p1 className={classes.error}>{props.errors.password}</p1>
             )}
 
             <Button className={classes.btn} type="submit">
@@ -65,7 +58,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
             <label> Register of an Account here </label>
             <Button
               className={classes.btn}
-              onClick={() => values.history.push('/Sign_Up')}
+              onClick={() => props.history.history.push('/Sign_Up')}
             >
               Register
             </Button>
@@ -74,6 +67,11 @@ const LoginForm = ({ errors, touched, values, status }) => {
       </div>
     </>
   );
+};
+const mapStateToProps = state => {
+  return {
+    newUser: state.newUser
+  };
 };
 
 const FormikLoginForm = withFormik({
@@ -89,20 +87,33 @@ const FormikLoginForm = withFormik({
     username: Yup.string().required('Please enter a username'),
     password: Yup.string().required('Enter a password')
   }),
-  handleSubmit(values, { resetForm, setStatus }) {
+  handleSubmit(values, { props, setStatus }) {
     console.log('Submit', values);
+    delete values.history;
     axios
       .post('https://finding-planets.herokuapp.com/auth/login', values)
       .then(res => {
-        console.log('token', res.data);
+        console.log('res', res);
         localStorage.setItem('token', res.data.token);
-        values.history.push('/AppPage');
 
-        resetForm();
+        props.setUserId(res.data.id);
+        setStatus(res.data.id);
+        props.storeUserId(res.data.id);
+        props.isLoggedIn(true);
+      })
+      .then(res => {
+        if (props.newUser == true) {
+          props.history.history.push('/createprofile');
+        } else {
+          props.history.history.push('./AppPage');
+        }
       })
 
       .catch(err => console.log(err));
   }
 })(LoginForm);
 
-export default FormikLoginForm;
+export default connect(
+  mapStateToProps,
+  { storeUserId, isLoggedIn }
+)(FormikLoginForm);

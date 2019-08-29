@@ -8,16 +8,17 @@ import axios from "axios";
 import RatingStar from "./RatingStar";
 import Infocard from "./InfoCard";
 
-function AppPage() {
+function AppPage(props) {
 
   const [starobj, setStarobj] = useState([]);
   const [starStat, setStarStat] = useState([]);
   const [mainID, setMainID] = useState(1);
 
 
+
   // Functions for next/previous buttons
   const nextID = (mainID) => {
-    if (mainID < 10) 
+    if (mainID < 10)
     {
     setMainID(mainID => mainID + 1);
     } else {
@@ -26,7 +27,7 @@ function AppPage() {
   };
 
   const previousID = (mainID) => {
-    if (mainID <= 1) 
+    if (mainID <= 1)
     {
     setMainID(mainID = 10);
     } else {
@@ -35,7 +36,7 @@ function AppPage() {
   };
   // End of functions foe next/previous buttons
 
-  // Axios main request part
+  // Axios request part
     useEffect(() => {
       const token = localStorage.getItem('token');
 
@@ -129,7 +130,7 @@ function AppPage() {
           The Transit Light Curve
         </Header>
         <img src={require(`../pics/${mainID}.png`)} className="Curve-Graph" alt="Light Curve Graph" />
-        
+
         <div className="Buttons">
 
           <Button 
