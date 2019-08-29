@@ -66,7 +66,7 @@ const LoginForm = (props) => {
             <label> Register of an Account here </label>
             <Button
               className={classes.btn}
-              onClick={() => props.values.history.push('/Sign_Up')}
+              onClick={() => props.history.history.push('/Sign_Up')}
             >
               Register
             </Button>
@@ -100,7 +100,7 @@ const FormikLoginForm = withFormik({
         localStorage.setItem('token', res.data.token);
         props.history.history.push('/createprofile');
         props.setUserId(res.data.id);
-        
+
       })
 
       .catch(err => console.log(err));

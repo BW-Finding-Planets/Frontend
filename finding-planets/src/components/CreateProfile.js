@@ -6,7 +6,7 @@ const CreateProfile = (props) => {
     console.log('props in createprofile', props)
     const [profile, setProfile] = useState({firstName:'', lastName:'', email:'',profession:''})
 
-   
+
 
     const handleChange = e => {
         setProfile({...profile, [e.target.name]: e.target.value})
@@ -14,17 +14,18 @@ const CreateProfile = (props) => {
 
     // const profileId = props.userId
 
-    const handleSubmit = e  => {
+    const handleSubmit = e => {
         e.preventDefault();
-        console.log('profile', profile)
+        console.log('profile', props.userId)
 
-        Axios 
+        Axios
             .put(`https://finding-planets.herokuapp.com/users/${props.userId}`, profile, {
                 headers: {
                     Authorization: localStorage.getItem('token')}})
             .then(res => {
                 console.log(res)
-                
+                props.props.history.push("/myprofile")
+
             })
             .catch(err => console.log(err.response))
     }
@@ -32,7 +33,7 @@ const CreateProfile = (props) => {
     return (
         <div>
             <form onSubmit ={handleSubmit}>
-                <input 
+                <input
                 type="text"
                 name="firstName"
                 placeholder="First Name"
@@ -40,7 +41,7 @@ const CreateProfile = (props) => {
                 onChange={handleChange}
                 />
 
-                <input 
+                <input
                 type="text"
                 name="lastName"
                 placeholder="Last Name"
@@ -48,7 +49,7 @@ const CreateProfile = (props) => {
                 onChange={handleChange}
                 />
 
-                <input 
+                <input
                 type="text"
                 name="email"
                 placeholder="Email"
@@ -56,15 +57,15 @@ const CreateProfile = (props) => {
                 onChange={handleChange}
                 />
 
-                <input 
+                <input
                 type="text"
                 name="profession"
                 placeholder="Profession"
                 value={profile.profession}
                 onChange={handleChange}
                 />
-                
-                <button type="submit" onClick={() => props.props.history.push("/myprofile")} >Create Profile</button>
+
+                <button type="submit">Create Profile</button>
             </form>
 
         </div>

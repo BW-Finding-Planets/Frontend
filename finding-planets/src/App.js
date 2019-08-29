@@ -14,43 +14,43 @@ function App() {
   const [userId, setUserId] = useState()
 
   console.log('id', userId)
-  
+
 
   return (
     <Router>
       <div className="App">
     <MenuAppBar />
-    
-    <Route 
-      exact path="/" 
+
+    <Route
+      exact path="/"
       render = {props => {
         return <FormikLoginForm  history={props} setUserId={setUserId} />
         }}
     />
-    
-    <Route 
-      exact path="/Sign_up"  
+
+    <Route
+      exact path="/Sign_up"
       render = {props => {
         console.log('props in render', props)
         return <SignUp history={props} setUserId={setUserId} />
         }}
     />
-    
-    <Route 
-      path ="/createprofile" 
+
+    <Route
+      path ="/createprofile"
       render = {props=> {
         return <CreateProfile props={props} userId={userId}/>
-      }}   
+      }}
     />
 
-    {/* <Route 
-      path ="/myprofile/edit" 
+    {/* <Route
+      path ="/myprofile/edit"
       render = {props=> {
         return <EditProfile userId={userId}/>
-      }}   
+      }}
     /> */}
-    
-    <PrivateRoute path="/myprofile" component={MyProfile}/>
+
+    <PrivateRoute path="/myprofile" component={MyProfile}  userId={userId}/>
 
     <Route path ="/AppPage" component = {AppPage} />
 
