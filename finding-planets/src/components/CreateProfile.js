@@ -1,6 +1,7 @@
 import React,  {useState} from 'react';
 import Axios from 'axios';
 import {Link} from 'react-router-dom'
+import MyProfile from './MyProfile'
 
 const CreateProfile = (props) => {
     console.log('props in createprofile', props)
@@ -23,10 +24,14 @@ const CreateProfile = (props) => {
                 headers: {
                     Authorization: localStorage.getItem('token')}})
             .then(res => {
-                console.log(res)
+                console.log('res in Create Profile',res)
+                
                 
             })
             .catch(err => console.log(err.response))
+
+        // console.log('check props in handleSubmit', props)
+        props.props.history.push("/myprofile")
     }
 
     return (
@@ -64,7 +69,7 @@ const CreateProfile = (props) => {
                 onChange={handleChange}
                 />
                 
-                <button type="submit" onClick={() => props.props.history.push("/myprofile")} >Create Profile</button>
+                <button type="submit" >Create Profile</button>
             </form>
 
         </div>

@@ -66,7 +66,7 @@ const LoginForm = (props) => {
             <label> Register of an Account here </label>
             <Button
               className={classes.btn}
-              onClick={() => props.values.history.push('/Sign_Up')}
+              onClick={() => props.history.history.push('/Sign_Up')}
             >
               Register
             </Button>

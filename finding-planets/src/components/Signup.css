@@ -41,7 +41,7 @@ flex-direction: column;
 
 p{
     color: white;
-    text-align: right;
+    /* text-align: right; */
     margin-right: 50px;
 }
 
