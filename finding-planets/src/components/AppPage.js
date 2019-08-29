@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react';
 
 import 'semantic-ui-css/semantic.min.css'
-import { Header, Button } from 'semantic-ui-react'
+import { Header, Button, Statistic } from 'semantic-ui-react'
 import axios from "axios";
 
-import SomeForm from "./Form";
+// import SomeForm from "./Form";
 import Infocard from "./InfoCard";
 
 function AppPage() {
@@ -92,9 +92,23 @@ function AppPage() {
         </Button.Group>
         </div>
 
-       <div>
+       {/* <div>
          <SomeForm mainID={mainID} starobj={starobj} />
-       </div>
+       </div> */}
+
+      <div className="Rating">
+
+        <Statistic>
+          <Statistic.Value>4,8</Statistic.Value>
+          <Statistic.Label>Rate of the star</Statistic.Label>
+        </Statistic>
+        <Statistic>
+          <Statistic.Value>58</Statistic.Value>
+          <Statistic.Label>Votes</Statistic.Label>
+        </Statistic>
+
+      </div>
+
 
        <div className="Cards-listing">
         {oneElement.map(data => {
