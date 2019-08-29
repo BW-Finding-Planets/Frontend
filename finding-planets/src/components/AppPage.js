@@ -6,7 +6,8 @@ import axios from "axios";
 
 import data from "../data";
 import Cards from "./Card";
-import SomeForm from "./Form"
+import SomeForm from "./Form";
+import Infocard from "./InfoCard";
 
 function AppPage() {
 
@@ -14,7 +15,7 @@ function AppPage() {
   const [starobj, setStarobj] = useState([]);
   const [mainID, setMainID] = useState(1);
 
-  // Functions foe next/previous buttons
+  // Functions for next/previous buttons
   const nextID = (mainID) => {
     if (mainID < 10) 
     {
@@ -43,7 +44,7 @@ function AppPage() {
         headers: { Authorization: localStorage.getItem("token") }
       })
       .then(response => {
-        const starData = response;
+        const starData = response.data;
         console.log("Star data is here", starData);
         setStarobj(starData);
         console.log(token)
@@ -54,6 +55,16 @@ function AppPage() {
   }, []);
   console.log("ID counter value: ", mainID)
   // End of Axios request part
+
+  // Preparing array for rendering of one element
+  const oneElement = starobj.filter(function(oneEl) {
+    if (oneEl.id === mainID) {
+      return true;
+    }
+    return false;
+  });
+  console.log("Current element", oneElement);
+  // End Preparing
 
   return (
     <div className="App">
@@ -83,9 +94,24 @@ function AppPage() {
         </div>
 
         <div><SomeForm /></div>
-        <div className="Cards-listing">
+        {/* <div className="Cards-listing">
           <Cards cardsList={cards} />
-       </div> 
+       </div>  */}
+       <div className="Cards-listing">
+        {oneElement.map(data => {
+      return (
+        <div >
+
+          <Infocard 
+           key={data.id}
+           tceid={data.tceid}
+          />
+        </div>
+      );
+    })}
+        </div>
+
+
 
       </header>
     </div>

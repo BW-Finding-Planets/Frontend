@@ -35,7 +35,9 @@
 
 .Cards-listing {
   margin: 3% 0;
-  width: 80% !important;
+  width: 90% !important;
+  background-color: white;
+  padding: 3%;
 }
 
 .ui.card.cards{
