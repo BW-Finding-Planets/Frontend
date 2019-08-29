@@ -13,7 +13,6 @@ function AppPage() {
   const [starobj, setStarobj] = useState([]);
   const [starStat, setStarStat] = useState([]);
   const [mainID, setMainID] = useState(1);
-  // const [statVal, setStatVal] = useState(0);
 
 
   // Functions for next/previous buttons
@@ -64,7 +63,7 @@ function AppPage() {
     }
     return false;
   });
-  console.log("Current element", oneElement);
+  // console.log("Current element", oneElement);
   // End Preparing
 
   
@@ -94,7 +93,7 @@ function AppPage() {
     }
     return false;
   });
-  console.log("Current stat element", oneStatElement);
+  // console.log("Current stat element", oneStatElement);
 
     //Getting grade from Object of Array
   let totalRate = oneStatElement.reduce((previousValue, vote) => {
@@ -117,7 +116,7 @@ function AppPage() {
   };
 
   finalRate = finalRates(totalRate, totalVotes);
-  console.log("Current stat VAAAAL", finalRate);
+  // console.log("Statistic Value: ", finalRate);
 
   // End Preparing
 
