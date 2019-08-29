@@ -11,8 +11,9 @@ import Infocard from "./InfoCard";
 function AppPage() {
 
   const [starobj, setStarobj] = useState([]);
+  const [starStat, setStarStat] = useState([]);
   const [mainID, setMainID] = useState(1);
-
+ 
 
 
   // Functions for next/previous buttons
@@ -35,7 +36,7 @@ function AppPage() {
   };
   // End of functions foe next/previous buttons
 
-  // Axios request part
+  // Axios main request part
     useEffect(() => {
       const token = localStorage.getItem('token');
 
@@ -50,7 +51,7 @@ function AppPage() {
         console.log(token)
       })
       .catch(function (error) {
-          console.log("Oh-oh, something wrong", error);
+          console.log("Oh-oh, something wrong with main array", error);
       });
   }, []);
   console.log("ID counter value: ", mainID)
@@ -67,6 +68,44 @@ function AppPage() {
   // End Preparing
 
   
+    // Axios statistic request part
+    useEffect(() => {
+      
+    axios
+      .get(`https://finding-planets.herokuapp.com/candidate/`, {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then(response => {
+        const starStatistic = response.data;
+        console.log("Statistic data is here", starStatistic);
+        setStarStat(starStatistic);
+      })
+      .catch(function (error) {
+          console.log("Oh-oh, something wrong with statistic", error);
+      });
+  }, []);
+  // console.log("ID counter value: ", mainID)
+    // End of Axios request part
+     
+    // Preparing array for rendering of statistic
+  const oneStatElement = starStat.filter(function(oneEl) {
+    if (oneEl.id === mainID) {
+      return true;
+    }
+    return false;
+  });
+  console.log("Current stat element", oneStatElement);
+
+
+  let totalRate = oneStatElement.reduce((previousValue, vote) => {
+    return previousValue + (vote.neutralLikely * 2) + (vote.someWhatLikely * 3) + (vote.someWhatUnLikely * 4) + (vote.veryLikely * 5) + (vote.veryUnLikely * 1);
+  }, 0);
+  // console.log("The total vote:", totalRate);
+
+  let finalRate = (totalRate);
+
+  // End Preparing
+
 
 
   return (
@@ -97,7 +136,7 @@ function AppPage() {
 
       <div className="Rating">
         <Statistic>
-          <Statistic.Value>4,8</Statistic.Value>
+          <Statistic.Value>{finalRate}</Statistic.Value>
           <Statistic.Label>Rating of light curve</Statistic.Label>
         </Statistic>
         <Statistic>
