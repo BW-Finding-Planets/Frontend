@@ -10,6 +10,7 @@ import EditProfile from './components/EditProfile'
 import MyProfile from './components/MyProfile'
 import PrivateRoute from './components/PrivateRoute'
 
+
 function App() {
   const [userId, setUserId] = useState()
 
@@ -47,18 +48,14 @@ function App() {
     <Route
       path ="/editprofile"
       render = {props=> {
-        return <CreateProfile props={props} button = {edit}/>
+        return <EditProfile props={props} button = {edit}/>
       }}
     />
 
-    {/* <Route
-      path ="/myprofile/edit"
-      render = {props=> {
-        return <EditProfile userId={userId}/>
-      }}
-    /> */}
 
-    <PrivateRoute path="/myprofile" component={MyProfile}  userId={userId}/>
+    <PrivateRoute path="/myprofile" 
+     component={MyProfile}  
+     userId={userId}/>
 
     <Route path ="/AppPage" component = {AppPage} />
 

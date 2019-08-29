@@ -45,6 +45,7 @@ const LoginForm = (props, { status }) => {
   console.log('props in Login', props);
   const classes = useStyles();
 
+ 
 
   return (
     <>
@@ -106,6 +107,7 @@ const FormikLoginForm = withFormik({
         setStatus(res.data.id);
         props.storeUserId(res.data.id)
         props.history.history.push('/createprofile');
+
       })
 
 
