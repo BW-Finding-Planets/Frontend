@@ -1,20 +1,16 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-import 'semantic-ui-css/semantic.min.css'
-import { Header, Button, Statistic } from 'semantic-ui-react'
-import axios from "axios";
+import 'semantic-ui-css/semantic.min.css';
+import { Header, Button, Statistic } from 'semantic-ui-react';
+import axios from 'axios';
 
-
-import RatingStar from "./RatingStar";
-import Infocard from "./Infocard";
+import RatingStar from './RatingStar';
+import Infocard from './Infocard';
 
 function AppPage(props) {
-
   const [starobj, setStarobj] = useState([]);
   const [starStat, setStarStat] = useState([]);
   const [mainID, setMainID] = useState(1);
-
-
 
   // Functions for next/previous/middle buttons
   const nextID = mainID => {
@@ -35,15 +31,15 @@ function AppPage(props) {
   const againID = () => {
     axios
       .get(`https://finding-planets.herokuapp.com/candidate/`, {
-        headers: { Authorization: localStorage.getItem("token") }
+        headers: { Authorization: localStorage.getItem('token') }
       })
       .then(response => {
         const starStatistic = response.data;
-        console.log("Statistic data is here", starStatistic);
+        console.log('Statistic data is here', starStatistic);
         setStarStat(starStatistic);
       })
-      .catch(function (error) {
-          console.log("Oh-oh, something wrong with repeiter statistic", error);
+      .catch(function(error) {
+        console.log('Oh-oh, something wrong with repeiter statistic', error);
       });
   };
   // End of functions foe next/previous buttons
@@ -110,11 +106,11 @@ function AppPage(props) {
   let totalRate = oneStatElement.reduce((previousValue, vote) => {
     return (
       previousValue +
-      (vote.veryUnLikely * 1) +
-      (vote.neutralLikely * 2) +
-      (vote.someWhatLikely * 3) +
-      (vote.someWhatUnLikely * 4) +
-      (vote.veryLikely * 5)
+      vote.veryUnLikely * 1 +
+      vote.neutralLikely * 2 +
+      vote.someWhatLikely * 3 +
+      vote.someWhatUnLikely * 4 +
+      vote.veryLikely * 5
     );
   }, 0);
 
@@ -135,7 +131,7 @@ function AppPage(props) {
     if (totalVotes === 0) {
       return (finalRate = 0);
     } else {
-      return finalRate = (totalRate / totalVotes).toFixed(2);
+      return (finalRate = (totalRate / totalVotes).toFixed(2));
     }
   };
 
@@ -175,10 +171,12 @@ function AppPage(props) {
             icon="right chevron"
             content="Forward"
             onClick={() => nextID(mainID)}
-            />
+          />
         </div>
 
-        <div className="CentralBtn"><Button onClick={() => againID()}>Boom</Button></div>
+        <div className="CentralBtn">
+          <Button onClick={() => againID()}>Boom</Button>
+        </div>
 
         <div className="Rating">
           <Statistic>
@@ -191,40 +189,37 @@ function AppPage(props) {
           </Statistic>
         </div>
 
-
-
-       <div className="Cards-listing">
-        {oneElement.map(data => {
-      return (
-        <div >
-
-          <Infocard 
-           key={data.id}
-           ticid_x={data.ticid_x}
-           id={data.id}
-           InsolationFlux={data.InsolationFlux}
-           star_radius={data.star_radius}
-           starTeffKelvin={data.starTeffKelvin}
-           magnitude={data.magnitude}
-           luminosity={data.luminosity}
-           star_mass={data.star_mass}
-           constellation={data.constellation}
-           rightascension={data.rightascension}
-           declination={data.declination}
-           predictions={data.predictions}
-           distance={data.distance}
-          />
+        <div className="Cards-listing">
+          {oneElement.map(data => {
+            return (
+              <div>
+                <Header as="h1">
+                  Model prediction:
+                  {parseFloat(data.predictions * 100).toFixed(2) + '%'}
+                </Header>
+                <Infocard
+                  key={data.id}
+                  ticid_x={data.ticid_x}
+                  id={data.id}
+                  InsolationFlux={data.InsolationFlux}
+                  star_radius={data.star_radius}
+                  starTeffKelvin={data.starTeffKelvin}
+                  magnitude={data.magnitude}
+                  luminosity={data.luminosity}
+                  star_mass={data.star_mass}
+                  constellation={data.constellation}
+                  rightascension={data.rightascension}
+                  declination={data.declination}
+                  predictions={data.predictions}
+                  distance={data.distance}
+                />
+              </div>
+            );
+          })}
         </div>
-      );
-    })}
-        </div>
-
-
-
       </header>
     </div>
   );
 }
 
 export default AppPage;
-
