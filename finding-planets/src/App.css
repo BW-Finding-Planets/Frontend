@@ -102,3 +102,8 @@
   border-radius: 15px;
   width: 40%;
 }
+.PropsCard {
+  font-size: 1.5rem !important;
+  line-height: 1.4rem;
+  font-style: italic !important;
+}

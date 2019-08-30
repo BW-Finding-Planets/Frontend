@@ -194,7 +194,7 @@ function AppPage(props) {
             return (
               <div>
                 <Header as="h1">
-                  Model prediction:
+                  Model prediction: 
                   {parseFloat(data.predictions * 100).toFixed(2) + '%'}
                 </Header>
                 <Infocard
