@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 import RatingStar from "./RatingStar";
-import Infocard from "./InfoCard";
+import Infocard from "./Infocard";
 
 function AppPage(props) {
 
@@ -178,6 +178,8 @@ function AppPage(props) {
             />
         </div>
 
+        <div className="CentralBtn"><Button onClick={() => againID()}>Boom</Button></div>
+
         <div className="Rating">
           <Statistic>
             <Statistic.Value>{finalRate}</Statistic.Value>
@@ -189,16 +191,6 @@ function AppPage(props) {
           </Statistic>
         </div>
 
-      <div className="Rating">
-        <Statistic>
-          <Statistic.Value>{finalRate}</Statistic.Value>
-          <Statistic.Label>Rating of light curve</Statistic.Label>
-        </Statistic>
-        <Statistic>
-          <Statistic.Value>{totalVotes}</Statistic.Value>
-          <Statistic.Label>Votes</Statistic.Label>
-        </Statistic>
-      </div>
 
 
        <div className="Cards-listing">
