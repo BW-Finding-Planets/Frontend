@@ -138,7 +138,7 @@ function AppPage() {
             content='Previous' 
             onClick={() => previousID(mainID)}
           />
-          <RatingStar className="Rating-Stars" />
+          <RatingStar mainID={mainID} className="Rating-Stars" />
           <Button
             labelPosition='right' 
             icon='right chevron' 
