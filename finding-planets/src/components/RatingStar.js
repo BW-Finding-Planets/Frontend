@@ -1,6 +1,7 @@
 import React from 'react'
 import { Rating } from 'semantic-ui-react'
 import axios from "axios";
+import { WSASYSCALLFAILURE } from 'constants';
 
 
 function RatingStar (props) {
@@ -9,12 +10,12 @@ function RatingStar (props) {
 
   const handleRate = (e, { rating }) => {
   console.log("Given rating is: ", rating)
-  // console.log("ID inside child: ", props.mainID)
  
-  let ranking = ['veryLikely', 'someWhatLikely', 'neutral', 'someWhatUnLikely', 'veryUnLikely']
-    
+  // Arrays which one have our data for dynamic woting
+  let ranking = ['veryLikely', 'someWhatLikely', 'neutralLikely', 'someWhatUnLikely', 'veryUnLikely']
+  let addressing = [{veryLikely: 1}, {someWhatLikely: 1}, {neutralLikely: 1}, {someWhatUnLikely: 1}, {veryUnLikely: 1}]
 
-
+  // Functions which one helps to choose right way, depends on vote
   let rankingSearch = (ranking, rating) => {
     if (rating === 5) 
     {
@@ -34,11 +35,33 @@ function RatingStar (props) {
             }
   };
 
+  let addressingSearch = (addressing, rating) => {
+    if (rating === 5) 
+    {
+      return addressing[0]
+    } else if 
+      (rating === 4) {
+        return addressing[1]
+      } else if 
+        (rating === 3) {
+          return addressing[2]
+        } else if 
+          (rating === 2) {
+            return addressing[3]
+          } else if 
+            (rating === 1) {
+              return addressing[4]
+            }
+  };
+
+  // Asking functions to do something important
   let address = rankingSearch(ranking, rating)
-  console.log("The address to voting: ", address);
+  let addressTo = addressingSearch(addressing, rating)
+  console.log("The ADDRESS to voting: ", address, "The WAY to voting: ", addressTo, "Vote was given: ", rating);
+
   axios
     
-    .put(`https://finding-planets.herokuapp.com/candidate/${props.mainID}/veryLikely`, {veryLikely: 1},  {
+    .put(`https://finding-planets.herokuapp.com/candidate/${props.mainID}/${address}`, addressTo,  {
       headers: { Authorization: localStorage.getItem("token") }
     })
 
