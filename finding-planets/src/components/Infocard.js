@@ -26,16 +26,22 @@ const StarCard = props => {
               <span className='price'>From</span>
               <span className='stay'>"{props.constellation}" constellation</span>
             </Item.Meta>
-            <p>magnitude: {props.magnitude}</p>   
-            <p>luminosity: {props.luminosity}</p>     
-            <p>star_mass: {props.star_mass}</p>     
-            <p>star_radius: {props.star_radius}</p>     
-            <p>constellation: {props.constellation}</p>     
-            <p>rightascension: {props.rightascension}</p>     
-            <p>declination: {props.declination}</p>   
-            <p>starTeffKelvin: {props.starTeffKelvin}</p>   
-            <p>model_prediction: {props.predictions}</p>   
-            <p>distance: {props.distance}</p>
+            <div className='CentralCard'>
+                <div>
+                    <p>Magnitude: {props.magnitude}</p>   
+                    <p>Luminosity: {props.luminosity}</p>     
+                    <p>Star_mass: {props.star_mass}</p>     
+                    <p>Star_radius: {props.star_radius}</p>     
+                    <p>Constellation: {props.constellation}</p>     
+                </div>
+                <div>
+                    <p>Rightascension: {props.rightascension}</p>     
+                    <p>Declination: {props.declination}</p>   
+                    <p>StarTeffKelvin: {props.starTeffKelvin}</p>   
+                    <p>Model_prediction: {props.predictions}</p>   
+                    <p>Distance: {props.distance}</p>
+                </div>
+            </div>
           </Item.Content>
         </Item>
     

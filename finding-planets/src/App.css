@@ -56,8 +56,8 @@
 .content p {
   color: black !important;
   text-align: left !important;
-  font-size: 1.2rem;
-  line-height: 0.8rem;
+  font-size: 1.3rem;
+  line-height: 1.4rem;
 }
 
 .ui.card.cards{
@@ -84,4 +84,17 @@
 .ui.icon.right.labeled.button {
   margin: 0 !important;
 }
-
+.CentralCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 2% 0;
+}
+.CentralCard div{
+  margin-top: 3%;
+  text-align: center !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
