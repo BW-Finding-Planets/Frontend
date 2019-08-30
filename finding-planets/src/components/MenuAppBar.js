@@ -70,7 +70,7 @@ const MenuAppBar = props => {
           {/*   <MenuIcon /> */}
           {/* </IconButton> */}
           <Typography variant="h6" className={classes.title}>
-            Favicon
+            Finding Planets
           </Typography>
           {props.loggedIn === true ? (
             <div>
