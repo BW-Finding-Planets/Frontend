@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 
-import 'semantic-ui-css/semantic.min.css';
-import { Header, Button, Statistic, Rating } from 'semantic-ui-react';
-import axios from 'axios';
+import 'semantic-ui-css/semantic.min.css'
+import { Header, Button, Statistic } from 'semantic-ui-react'
+import axios from "axios";
 
-import RatingStar from './RatingStar';
-import Infocard from './InfoCard';
+
+import RatingStar from "./RatingStar";
+import Infocard from "./InfoCard";
 
 function AppPage(props) {
+
   const [starobj, setStarobj] = useState([]);
   const [starStat, setStarStat] = useState([]);
   const [mainID, setMainID] = useState(1);
+
 
 
   // Functions for next/previous buttons
@@ -28,6 +31,20 @@ function AppPage(props) {
     } else {
       setMainID(mainID => mainID - 1);
     }
+  };
+  const againID = () => {
+    axios
+      .get(`https://finding-planets.herokuapp.com/candidate/`, {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then(response => {
+        const starStatistic = response.data;
+        console.log("Statistic data is here", starStatistic);
+        setStarStat(starStatistic);
+      })
+      .catch(function (error) {
+          console.log("Oh-oh, something wrong with repeiter statistic", error);
+      });
   };
   // End of functions foe next/previous buttons
 
@@ -118,7 +135,7 @@ function AppPage(props) {
     if (totalVotes === 0) {
       return (finalRate = 0);
     } else {
-      return (finalRate = totalRate / totalVotes);
+      return finalRate = (totalRate / totalVotes).toFixed(2);
     }
   };
 
@@ -152,13 +169,13 @@ function AppPage(props) {
             content="Previous"
             onClick={() => previousID(mainID)}
           />
-          <RatingStar className="Rating-Stars" />
+          <RatingStar mainID={mainID} className="Rating-Stars" />
           <Button
             labelPosition="right"
             icon="right chevron"
             content="Forward"
             onClick={() => nextID(mainID)}
-          />
+            />
         </div>
 
         <div className="Rating">
@@ -172,33 +189,50 @@ function AppPage(props) {
           </Statistic>
         </div>
 
-        <div className="Cards-listing">
-          {oneElement.map(data => {
-            return (
-              <div>
-                <Infocard
-                  key={data.id}
-                  ticid_x={data.ticid_x}
-                  id={data.id}
-                  InsolationFlux={data.InsolationFlux}
-                  star_radius={data.star_radius}
-                  starTeffKelvin={data.starTeffKelvin}
-                  magnitude={data.magnitude}
-                  luminosity={data.luminosity}
-                  star_mass={data.star_mass}
-                  constellation={data.constellation}
-                  rightascension={data.rightascension}
-                  declination={data.declination}
-                  predictions={data.predictions}
-                  distance={data.distance}
-                />
-              </div>
-            );
-          })}
+      <div className="Rating">
+        <Statistic>
+          <Statistic.Value>{finalRate}</Statistic.Value>
+          <Statistic.Label>Rating of light curve</Statistic.Label>
+        </Statistic>
+        <Statistic>
+          <Statistic.Value>{totalVotes}</Statistic.Value>
+          <Statistic.Label>Votes</Statistic.Label>
+        </Statistic>
+      </div>
+
+
+       <div className="Cards-listing">
+        {oneElement.map(data => {
+      return (
+        <div >
+
+          <Infocard 
+           key={data.id}
+           ticid_x={data.ticid_x}
+           id={data.id}
+           InsolationFlux={data.InsolationFlux}
+           star_radius={data.star_radius}
+           starTeffKelvin={data.starTeffKelvin}
+           magnitude={data.magnitude}
+           luminosity={data.luminosity}
+           star_mass={data.star_mass}
+           constellation={data.constellation}
+           rightascension={data.rightascension}
+           declination={data.declination}
+           predictions={data.predictions}
+           distance={data.distance}
+          />
         </div>
+      );
+    })}
+        </div>
+
+
+
       </header>
     </div>
   );
 }
 
 export default AppPage;
+
