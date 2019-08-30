@@ -17,7 +17,7 @@ function App() {
   console.log('id', userId)
   const create = 'Create Profile';
   const edit = 'Edit Profile';
-
+  document.title = "Favicon";
 
   return (
 
