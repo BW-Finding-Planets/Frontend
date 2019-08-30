@@ -17,19 +17,17 @@ function AppPage(props) {
 
 
   // Functions for next/previous buttons
-  const nextID = (mainID) => {
-    if (mainID < 10)
-    {
-    setMainID(mainID => mainID + 1);
+  const nextID = mainID => {
+    if (mainID < 54) {
+      setMainID(mainID => mainID + 1);
     } else {
-      setMainID(mainID = 1);
+      setMainID((mainID = 1));
     }
   };
 
-  const previousID = (mainID) => {
-    if (mainID <= 1)
-    {
-    setMainID(mainID = 10);
+  const previousID = mainID => {
+    if (mainID <= 1) {
+      setMainID(54);
     } else {
       setMainID(mainID => mainID - 1);
     }
@@ -51,24 +49,24 @@ function AppPage(props) {
   // End of functions foe next/previous buttons
 
   // Axios request part
-    useEffect(() => {
-      const token = localStorage.getItem('token');
+  useEffect(() => {
+    const token = localStorage.getItem('token');
 
     axios
       .get(`https://finding-planets.herokuapp.com/stars/`, {
-        headers: { Authorization: localStorage.getItem("token") }
+        headers: { Authorization: localStorage.getItem('token') }
       })
       .then(response => {
         const starData = response.data;
-        console.log("Star data is here", starData);
+        console.log('Star data is here', starData);
         setStarobj(starData);
-        console.log(token)
+        console.log(token);
       })
-      .catch(function (error) {
-          console.log("Oh-oh, something wrong with main array", error);
+      .catch(function(error) {
+        console.log('Oh-oh, something wrong with main array', error);
       });
   }, []);
-  console.log("ID counter value: ", mainID)
+  console.log('ID counter value: ', mainID);
   // End of Axios request part
 
   // Preparing array for rendering of one element
@@ -81,27 +79,25 @@ function AppPage(props) {
   // console.log("Current element", oneElement);
   // End Preparing
 
-  
-    // Axios statistic request part
-    useEffect(() => {
-      
+  // Axios statistic request part
+  useEffect(() => {
     axios
       .get(`https://finding-planets.herokuapp.com/candidate/`, {
-        headers: { Authorization: localStorage.getItem("token") }
+        headers: { Authorization: localStorage.getItem('token') }
       })
       .then(response => {
         const starStatistic = response.data;
-        console.log("Statistic data is here", starStatistic);
+        console.log('Statistic data is here', starStatistic);
         setStarStat(starStatistic);
       })
-      .catch(function (error) {
-          console.log("Oh-oh, something wrong with statistic", error);
+      .catch(function(error) {
+        console.log('Oh-oh, something wrong with statistic', error);
       });
   }, []);
   // console.log("ID counter value: ", mainID)
-    // End of Axios request part
-     
-    // Preparing array for rendering of statistic
+  // End of Axios request part
+
+  // Preparing array for rendering of statistic
   const oneStatElement = starStat.filter(function(oneEl) {
     if (oneEl.id === mainID) {
       return true;
@@ -110,21 +106,34 @@ function AppPage(props) {
   });
   // console.log("Current stat element", oneStatElement);
 
-    //Getting grade from Object of Array
+  //Getting grade from Object of Array
   let totalRate = oneStatElement.reduce((previousValue, vote) => {
-    return previousValue + (vote.veryUnLikely * 1) + (vote.neutralLikely * 2) + (vote.someWhatLikely * 3) + (vote.someWhatUnLikely * 4) + (vote.veryLikely * 5) ;
+    return (
+      previousValue +
+      vote.veryUnLikely * 1 +
+      vote.neutralLikely * 2 +
+      vote.someWhatLikely * 3 +
+      vote.someWhatUnLikely * 4 +
+      vote.veryLikely * 5
+    );
   }, 0);
-  
+
   let totalVotes = oneStatElement.reduce((previousValue, vote) => {
-    return previousValue + (vote.veryUnLikely) + (vote.neutralLikely) + (vote.someWhatLikely) + (vote.someWhatUnLikely) + (vote.veryLikely) ;
+    return (
+      previousValue +
+      vote.veryUnLikely +
+      vote.neutralLikely +
+      vote.someWhatLikely +
+      vote.someWhatUnLikely +
+      vote.veryLikely
+    );
   }, 0);
 
   let finalRate;
 
   let finalRates = (totalRate, totalVotes) => {
-    if (totalVotes === 0) 
-    {
-      return finalRate = 0;
+    if (totalVotes === 0) {
+      return (finalRate = 0);
     } else {
       return finalRate = (totalRate / totalVotes).toFixed(2);
     }
@@ -135,34 +144,50 @@ function AppPage(props) {
 
   // End Preparing
 
+  //===============> findind start image
+  console.log('StarObject', starobj);
 
+  const starImage = starobj.find(e => mainID === e.id);
 
   return (
     <div className="App">
       <header className="App-header">
-      <Header as='h1'>
-          The Transit Light Curve
-        </Header>
-        <img src={require(`../pics/${mainID}.png`)} className="Curve-Graph" alt="Light Curve Graph" />
+        <Header as="h1">The Transit Light Curve</Header>
+
+        {starImage && (
+          <img
+            src={`https://res.cloudinary.com/dbqdmpn0m/image/upload/v1567127641/lightwave/${starImage.ticid_x}.png`}
+            className="Curve-Graph"
+            alt="Light Curve Graph"
+          />
+        )}
 
         <div className="Buttons">
-
-          <Button 
-            labelPosition='left' 
-            icon='left chevron' 
-            content='Previous' 
+          <Button
+            labelPosition="left"
+            icon="left chevron"
+            content="Previous"
             onClick={() => previousID(mainID)}
           />
           <RatingStar mainID={mainID} className="Rating-Stars" />
           <Button
-            labelPosition='right' 
-            icon='right chevron' 
-            content='Forward' 
+            labelPosition="right"
+            icon="right chevron"
+            content="Forward"
             onClick={() => nextID(mainID)}
             />
         </div>
 
-      <div className="CentralBtn"><Button onClick={() => againID()}>Boom</Button></div>
+        <div className="Rating">
+          <Statistic>
+            <Statistic.Value>{finalRate}</Statistic.Value>
+            <Statistic.Label>Rating of light curve</Statistic.Label>
+          </Statistic>
+          <Statistic>
+            <Statistic.Value>{totalVotes}</Statistic.Value>
+            <Statistic.Label>Votes</Statistic.Label>
+          </Statistic>
+        </div>
 
       <div className="Rating">
         <Statistic>
