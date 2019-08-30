@@ -16,7 +16,7 @@ function AppPage(props) {
 
 
 
-  // Functions for next/previous buttons
+  // Functions for next/previous/middle buttons
   const nextID = mainID => {
     if (mainID < 54) {
       setMainID(mainID => mainID + 1);
