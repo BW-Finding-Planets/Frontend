@@ -19,6 +19,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store = {store}>
+    <link rel="shortcut icon" href="http://www.yoursite.com/your_favicon.png" type="image/x-icon" />
   <App />
   </Provider>
   , document.getElementById('root'));
