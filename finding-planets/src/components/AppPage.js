@@ -111,7 +111,7 @@ function AppPage() {
     {
       return finalRate = 0;
     } else {
-      return finalRate = (totalRate / totalVotes);
+      return finalRate = (totalRate / totalVotes).toFixed(3);
     }
   };
 
