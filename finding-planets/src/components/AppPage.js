@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 import RatingStar from "./RatingStar";
-import Infocard from "./InfoCard";
+import Infocard from "./Infocard";
 
 function AppPage(props) {
 
@@ -16,7 +16,7 @@ function AppPage(props) {
 
 
 
-  // Functions for next/previous buttons
+  // Functions for next/previous/middle buttons
   const nextID = mainID => {
     if (mainID < 54) {
       setMainID(mainID => mainID + 1);
@@ -110,11 +110,11 @@ function AppPage(props) {
   let totalRate = oneStatElement.reduce((previousValue, vote) => {
     return (
       previousValue +
-      vote.veryUnLikely * 1 +
-      vote.neutralLikely * 2 +
-      vote.someWhatLikely * 3 +
-      vote.someWhatUnLikely * 4 +
-      vote.veryLikely * 5
+      (vote.veryUnLikely * 1) +
+      (vote.neutralLikely * 2) +
+      (vote.someWhatLikely * 3) +
+      (vote.someWhatUnLikely * 4) +
+      (vote.veryLikely * 5)
     );
   }, 0);
 
@@ -178,6 +178,8 @@ function AppPage(props) {
             />
         </div>
 
+        <div className="CentralBtn"><Button onClick={() => againID()}>Boom</Button></div>
+
         <div className="Rating">
           <Statistic>
             <Statistic.Value>{finalRate}</Statistic.Value>
@@ -189,16 +191,6 @@ function AppPage(props) {
           </Statistic>
         </div>
 
-      <div className="Rating">
-        <Statistic>
-          <Statistic.Value>{finalRate}</Statistic.Value>
-          <Statistic.Label>Rating of light curve</Statistic.Label>
-        </Statistic>
-        <Statistic>
-          <Statistic.Value>{totalVotes}</Statistic.Value>
-          <Statistic.Label>Votes</Statistic.Label>
-        </Statistic>
-      </div>
 
 
        <div className="Cards-listing">

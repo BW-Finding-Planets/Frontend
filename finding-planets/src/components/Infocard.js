@@ -21,22 +21,27 @@ const StarCard = props => {
          
            
           <Item.Content>
-            <Item.Header>Star {props.ticid}</Item.Header>
+            <Item.Header>Star {props.ticid_x}</Item.Header>
             <Item.Meta>
-              <span className='price'>Radius</span>
-              <span className='stay'>{props.ratioSemiMajorAxisToStarRadius}</span>
+              <span className='price'>From</span>
+              <span className='stay'>"{props.constellation}" constellation</span>
             </Item.Meta>
-            <p>Insolation Flux: {props.InsolationFlux}</p>
-            {/* <p>magnitude: {props.}</p>    */}
-            {/* <p>luminosity: {props.}</p>      */}
-            {/* <p>star_mass: {props.}</p>      */}
-            <p>star_radius: {props.ratioSemiMajorAxisToStarRadius}</p>     
-            {/* <p>constellation: {props.}</p>      */}
-            {/* <p>rightascension: {props.}</p>      */}
-            {/* <p>declination: {props.}</p>    */}
-            <p>starTeffKelvin: {props.starTeffKelvin}</p>   
-            {/* <p>model_prediction: {props.}</p>    */}
-            {/* <p>distance: {props.}</p> */}
+            <div className='CentralCard'>
+                <div>
+                    <p>Magnitude: {props.magnitude}</p>   
+                    <p>Luminosity: {props.luminosity}</p>     
+                    <p>Star_mass: {props.star_mass}</p>     
+                    <p>Star_radius: {props.star_radius}</p>     
+                    <p>Constellation: {props.constellation}</p>     
+                </div>
+                <div>
+                    <p>Rightascension: {props.rightascension}</p>     
+                    <p>Declination: {props.declination}</p>   
+                    <p>StarTeffKelvin: {props.starTeffKelvin}</p>   
+                    <p>Model_prediction: {props.predictions}</p>   
+                    <p>Distance: {props.distance}</p>
+                </div>
+            </div>
           </Item.Content>
         </Item>
     

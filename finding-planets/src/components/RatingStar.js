@@ -12,8 +12,8 @@ function RatingStar (props) {
   console.log("Given rating is: ", rating)
  
   // Arrays which one have our data for dynamic woting
-  let ranking = ['veryLikely', 'someWhatLikely', 'neutralLikely', 'someWhatUnLikely', 'veryUnLikely']
-  let addressing = [{veryLikely: 1}, {someWhatLikely: 1}, {neutralLikely: 1}, {someWhatUnLikely: 1}, {veryUnLikely: 1}]
+  let ranking = ['veryLikely', 'someWhatUnLikely', 'someWhatLikely', 'neutralLikely', 'veryUnLikely']
+  let addressing = [{veryLikely: 1}, {someWhatUnLikely: 1}, {someWhatLikely: 1}, {neutralLikely: 1}, {veryUnLikely: 1}]
 
   // Functions which one helps to choose right way, depends on vote
   let rankingSearch = (ranking, rating) => {
