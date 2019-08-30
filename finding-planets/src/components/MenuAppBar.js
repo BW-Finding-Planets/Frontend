@@ -36,8 +36,6 @@ const MenuAppBar = props => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-
-
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
   }
@@ -98,7 +96,7 @@ const MenuAppBar = props => {
                   horizontal: 'right'
                 }}
                 open={open}
-            onClose={handleClose}
+                onClose={handleClose}
               >
                 <Link to="/myprofile">
                   <MenuItem onClick={handleClose}>My Profile</MenuItem>
@@ -118,6 +116,9 @@ const MenuAppBar = props => {
                     LogOut
                   </MenuItem>
                 </Link>
+                <MenuItem onClick={handleClose}>
+                  <a href="https://www.cfa.harvard.edu/~avanderb/tutorial/tutorial.html " target = "_blank">Learn how to read a light curve</a>
+                </MenuItem>
               </Menu>
             </div>
           ) : (

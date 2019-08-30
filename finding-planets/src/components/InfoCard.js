@@ -35,7 +35,7 @@ const StarCard = props => {
             <p>rightascension: {props.rightascension}</p>
             <p>declination: {props.declination}</p>
             <p>starTeffKelvin: {props.starTeffKelvin}</p>
-            <p>model_prediction: {props.predictions}</p>
+            <p>model_prediction: {parseFloat(props.predictions).toFixed(0)+"%"}</p>
             <p>distance: {props.distance}</p>
           </Item.Content>
         </Item>
