@@ -73,6 +73,9 @@ function RatingStar (props) {
         console.log("Oh-oh, something wrong with sending of vote", error);
     });
 
+
+
+
   }
 
   // 5 => veryLikely
@@ -85,7 +88,7 @@ function RatingStar (props) {
     
     return (
       <div>
-        <Rating maxRating={5} onRate={handleRate} />
+        <Rating maxRating={5} onRate={handleRate} size='massive' />
       </div>
     )
 

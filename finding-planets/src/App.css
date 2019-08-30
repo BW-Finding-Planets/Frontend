@@ -63,7 +63,7 @@
   width: 100% !important;
 }
 .Buttons {
-  margin-bottom: 3% !important;
+  margin-bottom: 2% !important;
   display: flex;
   background-color: lightgray;
   width: 70%;
@@ -71,8 +71,12 @@
   justify-content: space-between;
 
 }
+
+.CentralBtn {
+  margin-bottom: 2% !important;
+}
 .ui.rating {
-  margin-top: 12% !important;
+  margin-top: 3% !important;
 }
 .ui.icon.right.labeled.button {
   margin: 0 !important;

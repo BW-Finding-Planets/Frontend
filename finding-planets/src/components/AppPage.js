@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 
 import 'semantic-ui-css/semantic.min.css'
-import { Header, Button, Statistic, Rating } from 'semantic-ui-react'
+import { Header, Button, Statistic } from 'semantic-ui-react'
 import axios from "axios";
 
 
@@ -32,6 +32,20 @@ function AppPage() {
     } else {
       setMainID(mainID => mainID - 1);
     }
+  };
+  const againID = () => {
+    axios
+      .get(`https://finding-planets.herokuapp.com/candidate/`, {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then(response => {
+        const starStatistic = response.data;
+        console.log("Statistic data is here", starStatistic);
+        setStarStat(starStatistic);
+      })
+      .catch(function (error) {
+          console.log("Oh-oh, something wrong with repeiter statistic", error);
+      });
   };
   // End of functions foe next/previous buttons
 
@@ -111,7 +125,7 @@ function AppPage() {
     {
       return finalRate = 0;
     } else {
-      return finalRate = (totalRate / totalVotes).toFixed(3);
+      return finalRate = (totalRate / totalVotes).toFixed(2);
     }
   };
 
@@ -145,8 +159,9 @@ function AppPage() {
             content='Forward' 
             onClick={() => nextID(mainID)}
             />
-
         </div>
+
+      <div className="CentralBtn"><Button onClick={() => againID()}>Boom</Button></div>
 
       <div className="Rating">
         <Statistic>
