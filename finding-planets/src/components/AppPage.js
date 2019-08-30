@@ -110,11 +110,11 @@ function AppPage(props) {
   let totalRate = oneStatElement.reduce((previousValue, vote) => {
     return (
       previousValue +
-      vote.veryUnLikely * 1 +
-      vote.neutralLikely * 2 +
-      vote.someWhatLikely * 3 +
-      vote.someWhatUnLikely * 4 +
-      vote.veryLikely * 5
+      (vote.veryUnLikely * 1) +
+      (vote.neutralLikely * 2) +
+      (vote.someWhatLikely * 3) +
+      (vote.someWhatUnLikely * 4) +
+      (vote.veryLikely * 5)
     );
   }, 0);
 
