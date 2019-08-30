@@ -175,7 +175,7 @@ function AppPage(props) {
         </div>
 
         <div className="CentralBtn">
-          <Button onClick={() => againID()}>Boom</Button>
+          <Button onClick={() => againID()}>Rate</Button>
         </div>
 
         <div className="Rating">
