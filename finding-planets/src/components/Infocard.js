@@ -24,23 +24,22 @@ const StarCard = props => {
             <Item.Meta>
               <span className="price">From</span>
               <span className="stay">
-                "{props.constellation}" constellation
+                {props.constellation} constellation
               </span>
             </Item.Meta>
             <div className="CentralCard">
               <div>
-                <p>Magnitude: {props.magnitude}</p>
-                <p>Luminosity: {props.luminosity}</p>
-                <p>Star_mass: {props.star_mass}</p>
-                <p>Star_radius: {props.star_radius}</p>
-                <p>Constellation: {props.constellation}</p>
+                <p>Magnitude: </p><p className="PropsCard">{props.magnitude}</p><br />
+                <p>Luminosity: </p><p className="PropsCard">{props.luminosity}</p><br />
+                <p>Star mass:</p> <p className="PropsCard">{props.star_mass} in masses of our sun</p><br />
+                <p>Star radius:</p> <p className="PropsCard">{props.star_radius}°</p><br />
               </div>
               <div>
-                <p>Rightascension: {props.rightascension}</p>
-                <p>Declination: {props.declination}</p>
-                <p>StarTeffKelvin: {props.starTeffKelvin}</p>
+                <p>Right ascension: </p><p className="PropsCard">{props.rightascension}°</p><br />
+                <p>Declination: </p><p className="PropsCard">{props.declination}°</p><br />
+                <p>Effective temperature of star: </p><p className="PropsCard">{props.starTeffKelvin} Kelvin</p><br />
 
-                <p>Distance: {props.distance}</p>
+                <p>Distance from Earth: </p><p className="PropsCard">{props.distance} light years</p><br />
               </div>
             </div>
           </Item.Content>
