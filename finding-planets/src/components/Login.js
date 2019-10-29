@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Form, Field, withFormik, Formik } from 'formik';
+import { Form, Field, withFormik} from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { storeUserId, isLoggedIn } from '../state/actions/index';
@@ -23,8 +23,12 @@ const useStyles = makeStyles({
   media: {
     height: 200
   },
+  buttons:{
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
   btn: {
-    marginTop: '30px',
+    margin: '20px 10px',
     background: 'orange'
   },
   error: {
@@ -42,26 +46,26 @@ const LoginForm = (props, { status }) => {
           <h2>Login Page</h2>
           <Form className="formCon">
             <label>Username</label>
-            <Field type="text" name="username" placeholder="username..." />
+            <Field type="text" name="username" placeholder="Enter your username" />
             {props.touched.username && props.errors.username && (
               <p1 className={classes.error}>{props.errors.username}</p1>
             )}
             <label>Password</label>
-            <Field type="password" name="password" placeholder="password.." />
+            <Field type="password" name="password" placeholder="Enter your password" />
             {props.touched.password && props.errors.password && (
               <p1 className={classes.error}>{props.errors.password}</p1>
             )}
-
+            <div className={classes.buttons}>
             <Button className={classes.btn} type="submit">
               Login
             </Button>
-            <label> Register of an Account here </label>
             <Button
               className={classes.btn}
               onClick={() => props.history.history.push('/Sign_Up')}
             >
               Register
             </Button>
+            </div>
           </Form>
         </Card>
       </div>
@@ -102,7 +106,7 @@ const FormikLoginForm = withFormik({
         props.isLoggedIn(true);
       })
       .then(res => {
-        if (props.newUser == true) {
+        if (props.newUser === true) {
           props.history.history.push('/createprofile');
         } else {
           props.history.history.push('./AppPage');

@@ -7,32 +7,31 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import './CreateProfile.css';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 import './Login.css';
 
 const useStyles = makeStyles({
-    card: {
-      maxWidth: 500,
-      display: 'flex',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      flexWrap: 'wrap',
-      marginTop: '220px',
-      width: '400px',
-    },
-    media: {
-      height: 200,
-    },
-    btn:
-    {
+  card: {
+    maxWidth: 500,
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    marginTop: '220px',
+    width: '400px',
+  },
+  media: {
+    height: 200,
+  },
+  btn:
+  {
     marginTop: '30px',
     background: 'orange',
-    },
-    error:{
-      color: 'red',
-      fontSize: '.8rem'
+  },
+  error: {
+    color: 'red',
+    fontSize: '.8rem'
 
-    }
+  }
 })
 
 
@@ -54,8 +53,8 @@ const CreateProfile = props => {
 
 
   const [profile, setProfile] = useState({
-    firstName:'',
-    lastName:  '',
+    firstName: '',
+    lastName: '',
     email: '',
     profession: ''
   });
@@ -93,6 +92,7 @@ const CreateProfile = props => {
     props.getUserData(props.id).then(() => {
     });
   }, []);
+
 
   useEffect(() => {
     if (prevUserName === '' && prevUserName !== props.username) {

@@ -1,12 +1,8 @@
 import React from 'react'
 import { Rating } from 'semantic-ui-react'
 import axios from "axios";
-import { WSASYSCALLFAILURE } from 'constants';
-
 
 function RatingStar (props) {
-
-
 
   const handleRate = (e, { rating }) => {
   console.log("Given rating is: ", rating)

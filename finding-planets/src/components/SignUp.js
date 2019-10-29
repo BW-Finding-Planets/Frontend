@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -6,8 +6,6 @@ import './Signup.css';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import MenuAppBar from './MenuAppBar';
-import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -37,14 +35,12 @@ const useStyles = makeStyles({
 });
 
 const SignUp = props => {
-  console.log('props in SignUp', props);
-  // const [user, setUser] = useState({username: '', password: ''})
+
   const classes = useStyles();
 
-  console.log(props);
   return (
     <>
-          <div className="container2">
+      <div className="container2">
         <Card className={classes.card}>
           <h2>Register to discover planets</h2>
 
@@ -56,13 +52,13 @@ const SignUp = props => {
             )}
 
             <label>Password</label>
-            <Field type="text" placeholder="password" name="password" />
+            <Field type="password" placeholder="password" name="password" />
             {props.touched.password && props.errors.password && (
               <p1 className={classes.error}>{props.errors.password}</p1>
             )}
 
             <label>Confirm Password</label>
-            <Field type="text" placeholder="password" name="passwordConfirm" />
+            <Field type="password" placeholder="password" name="passwordConfirm" />
             {props.touched.passwordConfirm && props.errors.passwordConfirm && (
               <p1 className={classes.error}>{props.errors.passwordConfirm}</p1>
             )}
@@ -89,15 +85,10 @@ const FormikSignUp = withFormik({
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required(
-      'A username is important to keep you validated'
+      'Please enter a username'
     ),
     password: Yup.string()
-      .required("A password is important, you can't miss")
-      .min(8, 'Password  should be 8 characters minimum.')
-      .matches(
-        /(^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.{8,}))/,
-        'Password must contain at least one uppercase character and one special character'
-      ),
+      .required("Please enter a password"),
     passwordConfirm: Yup.string().oneOf(
       [Yup.ref('password')],
       'Passwords do not match'

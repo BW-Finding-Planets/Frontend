@@ -6,13 +6,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
-// import {stringify} from 'jest-matcher-utils';
 import Menu from '@material-ui/core/Menu';
 import { Link } from 'react-router-dom';
 
@@ -106,6 +102,9 @@ const MenuAppBar = props => {
                     Start Finding Planets
                   </MenuItem>
                 </Link>
+                <MenuItem onClick={handleClose}>
+                  <a href="https://www.cfa.harvard.edu/~avanderb/tutorial/tutorial.html " target = "_blank" rel="noopener noreferrer">Learn how to read a light curve</a>
+                </MenuItem>
                 <Link to="/">
                   <MenuItem
                     onClick={() => {
@@ -113,12 +112,9 @@ const MenuAppBar = props => {
                       props.isNewUser(false);
                     }}
                   >
-                    LogOut
+                    Logout
                   </MenuItem>
                 </Link>
-                <MenuItem onClick={handleClose}>
-                  <a href="https://www.cfa.harvard.edu/~avanderb/tutorial/tutorial.html " target = "_blank">Learn how to read a light curve</a>
-                </MenuItem>
               </Menu>
             </div>
           ) : (
